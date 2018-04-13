@@ -14,6 +14,7 @@ export class RegisterUserComponent implements OnInit {
   hasCameras = false;
   qrScanResult: string;
   scannerEnabled = true;
+  autofocusEnabled = true;
 
   availableDevices: MediaDeviceInfo[];
   selectedDevice: MediaDeviceInfo;
