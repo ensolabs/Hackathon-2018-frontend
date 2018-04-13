@@ -1,0 +1,16 @@
+<div>
+  <p>
+    register-user works!
+  </p>
+  <zxing-scanner #scanner class="small-video"
+    [scannerEnabled]="scannerEnabled"
+    [autofocusEnabled]="autofocusEnabled"
+    [device]="selectedDevice"
+    [cssClass]="'small-video'"
+    (camerasFound)="displayCameras($event)"
+    (scanSuccess)="handleQrCodeResult($event)"
+  ></zxing-scanner>
+  <p>
+    Scan result: {{ qrScanResult }}
+  </p>
+</div>
