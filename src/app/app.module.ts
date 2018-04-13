@@ -22,9 +22,10 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     MatButtonModule, MatCheckboxModule, MatFormFieldModule,MatInputModule,
                 MatOptionModule, MatSelectModule,MatSlideToggleModule,MatCardModule,
-                MatChipsModule, MatToolbarModule, MatIconModule,MatListModule,FlexLayoutModule
+                MatChipsModule, MatToolbarModule, MatIconModule,MatListModule,FlexLayoutModule,
+                HttpClientModule
   ],
-  providers: [BackendService,HttpClientModule],
+  providers: [BackendService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
