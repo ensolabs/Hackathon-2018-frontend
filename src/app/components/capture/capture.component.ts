@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { WebCamComponent } from 'ack-angular-webcam';
 
 @Component({
   selector: 'app-capture',
@@ -7,13 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CaptureComponent implements OnInit {
 
-  public options:any = {
-    audio: false,
-    video: true,
-    width: 500,
-    height: 500,
-    cameraType: 'back'
-  };
+  webcam:WebCamComponent//will be populated by <ack-webcam [(ref)]="webcam">
+  base64
+
+  options:any = {
+    video:true,
+    width:500,
+    height:500
+  }
 
   constructor() { }
 
@@ -23,26 +25,6 @@ export class CaptureComponent implements OnInit {
     this.webcam.getBase64()
     .then( base=>{this.base64=base; console.log(this.base64)})
     .catch( e=>console.error(e) )
-  }
-
-  //get HTML5 FormData object and pretend to post to server
-  genPostData(){
-    this.webcam.captureAsFormData({fileName:'file.jpg'})
-    .then( formData=>this.postFormData(formData) )
-    .catch( e=>console.error(e) )
-  }
-
-  //a pretend process that would post the webcam photo taken
-  postFormData(formData){
-    const config = {
-      method:"post",
-      url:"http://www.aviorsciences.com/",
-      body: formData
-    }
-
-    const request = new Request(config)
-
-    return this.http.request( request )
   }
 
   onCamError(err){}
