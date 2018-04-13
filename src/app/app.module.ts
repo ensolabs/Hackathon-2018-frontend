@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatButtonModule, MatCheckboxModule,MatFormFieldModule,MatInputModule, MatOptionModule, MatSelectModule, MatSlideToggleModule, MatCardModule, MatChipsModule,
-  MatToolbarModule,  MatListModule, MatIconModule} from '@angular/material';
+  MatToolbarModule,  MatListModule, MatIconModule, MatProgressBarModule} from '@angular/material';
 import {FlexLayoutModule} from "@angular/flex-layout";
 
 
@@ -38,6 +38,7 @@ const appRoutes: Routes = [
     MatButtonModule, MatCheckboxModule, MatFormFieldModule,MatInputModule,
                 MatOptionModule, MatSelectModule,MatSlideToggleModule,MatCardModule,
                 MatChipsModule, MatToolbarModule, MatIconModule,MatListModule,FlexLayoutModule,
+                MatProgressBarModule,
                 HttpClientModule, RouterModule.forRoot(
                   appRoutes,
                   { enableTracing: false } // <-- debugging purposes only
@@ -49,6 +50,6 @@ const appRoutes: Routes = [
 export class AppModule {
   // Diagnostic only: inspect router configuration
   constructor() {
-    
+
   }
 }

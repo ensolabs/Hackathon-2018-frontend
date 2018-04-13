@@ -1,12 +1,25 @@
-<mat-list>
+
+<div class="trudepage" fxLayout="column">
+
   <h3 mat-subheader>Score</h3>
-  <mat-list-item *ngFor="let score of scores">
-    <div class="scoreEntryList" style="width:100%">
-      <div fxLayout="row" fxLayoutAlign="space-around center" >
-        <mat-icon mat-list-icon>{{score.image}}</mat-icon>
-        <div fxFill> {{score.title}} </div>
-        <div> {{score.score}} </div>
-      </div>
+
+  <div fxLayout="column">
+    <div fxLayout="row">
+      <div fxFill>PriceProgress</div>
+      <div>30/100</div>
     </div>
-  </mat-list-item>
-</mat-list>
+    <mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
+  </div>
+
+  <mat-list>
+    <mat-list-item *ngFor="let score of scores">
+      <div class="scoreEntryList" style="width:100%">
+        <div fxLayout="row" fxLayoutAlign="space-around center" >
+          <mat-icon mat-list-icon>{{score.image}}</mat-icon>
+          <div fxFill> {{score.title}} </div>
+          <div> {{score.score}} </div>
+        </div>
+      </div>
+    </mat-list-item>
+  </mat-list>
+</div>
