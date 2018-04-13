@@ -11,11 +11,26 @@ import { ScoreComponent } from './components/score/score.component';
 import { BackendService } from './services/backend.service';
 import { HttpClientModule } from '@angular/common/http';
 
+import { RouterModule, Routes, Router } from '@angular/router';
+import { AdminComponent } from './components/admin/admin.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+
+const appRoutes: Routes = [
+  { path: 'score', component: ScoreComponent },
+  { path: 'admin',      component: AdminComponent },
+  { path: '',
+    redirectTo: '/score',
+    pathMatch: 'full'
+  },
+  { path: '**', component: PageNotFoundComponent }
+];
 
 @NgModule({
   declarations: [
     AppComponent,
-    ScoreComponent
+    ScoreComponent,
+    AdminComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -23,9 +38,17 @@ import { HttpClientModule } from '@angular/common/http';
     MatButtonModule, MatCheckboxModule, MatFormFieldModule,MatInputModule,
                 MatOptionModule, MatSelectModule,MatSlideToggleModule,MatCardModule,
                 MatChipsModule, MatToolbarModule, MatIconModule,MatListModule,FlexLayoutModule,
-                HttpClientModule
+                HttpClientModule, RouterModule.forRoot(
+                  appRoutes,
+                  { enableTracing: false } // <-- debugging purposes only
+                )
   ],
   providers: [BackendService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  // Diagnostic only: inspect router configuration
+  constructor() {
+    
+  }
+}
