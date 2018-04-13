@@ -7,11 +7,15 @@ import {FlexLayoutModule} from "@angular/flex-layout";
 
 
 import { AppComponent } from './app.component';
+import { ScoreComponent } from './components/score/score.component';
+import { BackendService } from './services/backend.service';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ScoreComponent
   ],
   imports: [
     BrowserModule,
@@ -20,7 +24,7 @@ import { AppComponent } from './app.component';
                 MatOptionModule, MatSelectModule,MatSlideToggleModule,MatCardModule,
                 MatChipsModule, MatToolbarModule, MatIconModule,MatListModule,FlexLayoutModule
   ],
-  providers: [],
+  providers: [BackendService,HttpClientModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
