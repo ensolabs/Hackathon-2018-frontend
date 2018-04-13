@@ -5,6 +5,7 @@ import {MatButtonModule, MatCheckboxModule,MatFormFieldModule,MatInputModule, Ma
   MatToolbarModule,  MatListModule, MatIconModule, MatProgressBarModule} from '@angular/material';
 import {FlexLayoutModule} from "@angular/flex-layout";
 import { ZXingScannerModule } from '@zxing/ngx-scanner';
+import { WebCamModule } from 'ack-angular-webcam';
 
 
 import { AppComponent } from './app.component';
@@ -16,10 +17,12 @@ import { RouterModule, Routes, Router } from '@angular/router';
 import { AdminComponent } from './components/admin/admin.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { RegisterUserComponent } from './components/register-user/register-user.component';
+import { CaptureComponent } from './components/capture/capture.component';
 
 const appRoutes: Routes = [
   { path: 'score', component: ScoreComponent },
   { path: 'register', component: RegisterUserComponent },
+  { path: 'capture', component: CaptureComponent },
   { path: 'admin',      component: AdminComponent },
   { path: '',
     redirectTo: '/score',
@@ -34,7 +37,8 @@ const appRoutes: Routes = [
     ScoreComponent,
     AdminComponent,
     PageNotFoundComponent,
-    RegisterUserComponent
+    RegisterUserComponent,
+    CaptureComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +46,7 @@ const appRoutes: Routes = [
     MatButtonModule, MatCheckboxModule, MatFormFieldModule,MatInputModule,
                 MatOptionModule, MatSelectModule,MatSlideToggleModule,MatCardModule,
                 MatChipsModule, MatToolbarModule, MatIconModule,MatListModule,FlexLayoutModule,
-                MatProgressBarModule,
+                MatProgressBarModule, WebCamModule,
                 HttpClientModule, RouterModule.forRoot(
                   appRoutes,
                   { enableTracing: false } // <-- debugging purposes only
