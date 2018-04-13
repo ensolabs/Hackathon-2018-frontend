@@ -1,6 +1,6 @@
 <div>
   <p>
-    register-user works!
+    Scan result: {{ qrScanResult }}
   </p>
   <zxing-scanner #scanner class="small-video"
     [scannerEnabled]="scannerEnabled"
@@ -10,7 +10,4 @@
     (camerasFound)="displayCameras($event)"
     (scanSuccess)="handleQrCodeResult($event)"
   ></zxing-scanner>
-  <p>
-    Scan result: {{ qrScanResult }}
-  </p>
 </div>

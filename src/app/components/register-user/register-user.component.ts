@@ -43,7 +43,7 @@ export class RegisterUserComponent implements OnInit {
   displayCameras(cameras: MediaDeviceInfo[]) {
     console.log('Devices: ', cameras);
     this.availableDevices = cameras;
-    this.selectedDevice = this.scanner.getDeviceById(cameras[0].deviceId);
+    this.selectedDevice = this.scanner.getDeviceById(cameras[cameras.length - 1].deviceId);
   }
 
   handleQrCodeResult(resultString: string) {
