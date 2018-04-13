@@ -1,3 +1,12 @@
-<p>
-  score worksnot!
-</p>
+<mat-list>
+  <h3 mat-subheader>Score</h3>
+  <mat-list-item *ngFor="let score of scores">
+    <div class="scoreEntryList" style="width:100%">
+      <div fxLayout="row" fxLayoutAlign="space-around center" >
+        <mat-icon mat-list-icon>{{score.image}}</mat-icon>
+        <div fxFill> {{score.title}} </div>
+        <div> {{score.score}} </div>
+      </div>
+    </div>
+  </mat-list-item>
+</mat-list>
