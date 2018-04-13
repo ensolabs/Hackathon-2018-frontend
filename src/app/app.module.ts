@@ -4,6 +4,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatButtonModule, MatCheckboxModule,MatFormFieldModule,MatInputModule, MatOptionModule, MatSelectModule, MatSlideToggleModule, MatCardModule, MatChipsModule,
   MatToolbarModule,  MatListModule, MatIconModule, MatProgressBarModule} from '@angular/material';
 import {FlexLayoutModule} from "@angular/flex-layout";
+import { ZXingScannerModule } from '@zxing/ngx-scanner';
 
 
 import { AppComponent } from './app.component';
@@ -14,9 +15,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes, Router } from '@angular/router';
 import { AdminComponent } from './components/admin/admin.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { RegisterUserComponent } from './components/register-user/register-user.component';
 
 const appRoutes: Routes = [
   { path: 'score', component: ScoreComponent },
+  { path: 'register', component: RegisterUserComponent },
   { path: 'admin',      component: AdminComponent },
   { path: '',
     redirectTo: '/score',
@@ -30,7 +33,8 @@ const appRoutes: Routes = [
     AppComponent,
     ScoreComponent,
     AdminComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    RegisterUserComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +46,8 @@ const appRoutes: Routes = [
                 HttpClientModule, RouterModule.forRoot(
                   appRoutes,
                   { enableTracing: false } // <-- debugging purposes only
-                )
+                ),
+                ZXingScannerModule.forRoot()
   ],
   providers: [BackendService],
   bootstrap: [AppComponent]
