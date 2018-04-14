@@ -10,7 +10,9 @@ export class AppLoadService {
     const promise = this.httpClient.get('assets/config.json')
       .toPromise()
       .then(settings=> {
-        this.configService.url = settings["apiurl"];
+        this.configService.urlHighScore = settings["urlHighScore"];
+        this.configService.urlOwnScore = settings["urlOwnScore"];
+        this.configService.urlPostImage = settings["urlPostImage"];
         return settings;
       });
     return promise;
