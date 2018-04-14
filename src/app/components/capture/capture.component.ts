@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { WebCamComponent } from 'ack-angular-webcam';
 import { BackendService } from '../../services/backend.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-capture',
@@ -18,7 +19,7 @@ export class CaptureComponent implements OnInit {
     height:500
   }
 
-  constructor(public _service:BackendService) { }
+  constructor(public _service:BackendService, public router:Router) { }
 
   ngOnInit() {
   }
@@ -33,7 +34,6 @@ export class CaptureComponent implements OnInit {
       canvas.getContext('2d').drawImage(video, 0, 0);
     }
 
-    console.log('show capture');
     this.showCapture = true;
 
   }
@@ -44,7 +44,7 @@ export class CaptureComponent implements OnInit {
     const base64 = dataURL.substr(dataURL.indexOf(',') + 1);
     console.log(base64);
     this._service.submitImage(base64).subscribe(x=>{
-        console.log(x);
+        this.router.navigate(['score']);
       },err=>{console.log(err)});
   };
 

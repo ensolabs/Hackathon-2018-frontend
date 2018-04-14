@@ -1,5 +1,6 @@
 <div [ngClass]="{'hidden': showCapture}">
   <ack-webcam
+    [facingMode] = "environment"
     [(ref)]   = "webcam"
     [options] = "options"
     (success) = "onCamSuccess()"
