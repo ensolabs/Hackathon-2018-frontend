@@ -8,9 +8,19 @@ import { ScoreEntry } from  '../../model/all';
   styleUrls: ['./score.component.css']
 })
 export class ScoreComponent implements OnInit {
+
   public scores: ScoreEntry[] = [new ScoreEntry(1, 'bygg', 'build', 10), new ScoreEntry(2, 'ro ro', 'rowing', 20)];
+  public priceScore = 101;
+  public totalScore = 90;
+
+
   constructor(public _service:BackendService) { }
   ngOnInit() {
-    this._service.scoreStuff().subscribe(x=>{console.log(x)},err=>{console.log(err)});
+    this._service.scoreStuff().subscribe(x=>{
+        console.log(x);
+        //this.priceScore = x.priceScore;
+        //this.totalScore = x.totalScore;
+        //this.scores = x.scoredTasks;
+      },err=>{console.log(err)});
   }
 }

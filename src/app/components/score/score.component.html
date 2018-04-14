@@ -6,9 +6,9 @@
   <div fxLayout="column">
     <div fxLayout="row">
       <div class="mat-body-1">PriceProgress</div>
-      <div class="progressScore mat-body-1">40/100</div>
+      <div class="progressScore mat-body-1">{{totalScore}}/{{priceScore}}</div>
     </div>
-    <mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
+    <mat-progress-bar mode="determinate" value="{{totalScore}}"></mat-progress-bar>
   </div>
 
   <mat-list>
@@ -16,7 +16,7 @@
       <div class="scoreEntryList" style="width:100%">
         <div fxLayout="row" fxLayoutAlign="space-around center" >
           <mat-icon mat-list-icon>{{score.image}}</mat-icon>
-          <div fxFill> {{score.title}} </div>
+          <div fxFill> {{score.name}} </div>
           <div> {{score.score}} </div>
         </div>
       </div>
