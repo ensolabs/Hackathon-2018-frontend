@@ -34,7 +34,7 @@ export class RegisterUserComponent implements OnInit {
     console.log('Devices: ', cameras);
     this.availableDevices = cameras;
     for (const device of cameras) {
-      if (/back|rear|environment/gi.test(device.label)) {
+      if (/bak|back|rear|environment/gi.test(device.label)) { // FIXME skrøpelig sjekk
         this.scanner.changeDevice(device);
         this.selectedDevice = device;
         break;
