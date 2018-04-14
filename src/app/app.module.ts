@@ -57,8 +57,8 @@ const appRoutes: Routes = [
                 ),
                 ZXingScannerModule.forRoot()
   ],
-  providers: [RegisteredCheckComponent, BackendService, AppLoadService, ConfigService, 
-    { provide: APP_INITIALIZER, useFactory: get_settings, deps: [AppLoadService], multi: true }
+  providers: [RegisteredCheckComponent, BackendService, AppLoadService, ConfigService/*, 
+    { provide: APP_INITIALIZER, useFactory: get_settings, deps: [AppLoadService], multi: true }*/
   ],
   bootstrap: [AppComponent]
 })
