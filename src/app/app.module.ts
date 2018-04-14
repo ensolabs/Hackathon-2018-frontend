@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatButtonModule, MatCheckboxModule,MatFormFieldModule,MatInputModule, MatOptionModule, MatSelectModule, MatSlideToggleModule, MatCardModule, MatChipsModule,
   MatToolbarModule,  MatListModule, MatIconModule, MatProgressBarModule} from '@angular/material';
@@ -18,6 +18,8 @@ import { AdminComponent } from './components/admin/admin.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { RegisterUserComponent } from './components/register-user/register-user.component';
 import { CaptureComponent } from './components/capture/capture.component';
+import { AppLoadService } from './services/app-load.service';
+import { ConfigService } from './services/config.service';
 
 const appRoutes: Routes = [
   { path: 'score', component: ScoreComponent },
@@ -53,7 +55,9 @@ const appRoutes: Routes = [
                 ),
                 ZXingScannerModule.forRoot()
   ],
-  providers: [BackendService],
+  providers: [BackendService,AppLoadService,ConfigService,
+    { provide: APP_INITIALIZER, useFactory: get_settings, deps: [AppLoadService], multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
@@ -61,4 +65,7 @@ export class AppModule {
   constructor() {
 
   }
+}
+export function get_settings(appLoadService: AppLoadService) {
+  return () => appLoadService.getSettings();
 }
