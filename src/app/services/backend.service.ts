@@ -7,6 +7,6 @@ export class BackendService {
 
   constructor(public client:HttpClient, public config:ConfigService) { }
   scoreStuff(){
-    return this.client.get(this.config.url);
+    return this.client.get(this.config.urlPostImage);
   }
 }
