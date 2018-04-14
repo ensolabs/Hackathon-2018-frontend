@@ -17,15 +17,16 @@ import { RouterModule, Routes, Router } from '@angular/router';
 import { AdminComponent } from './components/admin/admin.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { RegisterUserComponent } from './components/register-user/register-user.component';
+import { RegisteredCheckComponent } from './components/registered-check/registered-check.component';
 import { CaptureComponent } from './components/capture/capture.component';
 import { AppLoadService } from './services/app-load.service';
 import { ConfigService } from './services/config.service';
 
 const appRoutes: Routes = [
-  { path: 'score', component: ScoreComponent },
+  { path: 'score', component: ScoreComponent, canActivate: [RegisteredCheckComponent] },
   { path: 'register', component: RegisterUserComponent },
   { path: 'capture', component: CaptureComponent },
-  { path: 'admin',      component: AdminComponent },
+  { path: 'admin', component: AdminComponent },
   { path: '',
     redirectTo: '/score',
     pathMatch: 'full'
@@ -40,7 +41,8 @@ const appRoutes: Routes = [
     AdminComponent,
     PageNotFoundComponent,
     RegisterUserComponent,
-    CaptureComponent
+    CaptureComponent,
+    RegisteredCheckComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +57,7 @@ const appRoutes: Routes = [
                 ),
                 ZXingScannerModule.forRoot()
   ],
-  providers: [BackendService,AppLoadService,ConfigService,
+  providers: [RegisteredCheckComponent, BackendService, AppLoadService, ConfigService, 
     { provide: APP_INITIALIZER, useFactory: get_settings, deps: [AppLoadService], multi: true }
   ],
   bootstrap: [AppComponent]
