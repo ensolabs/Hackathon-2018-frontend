@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { WebCamComponent } from 'ack-angular-webcam';
+import { BackendService } from '../../services/backend.service';
 
 @Component({
   selector: 'app-capture',
@@ -17,14 +18,9 @@ export class CaptureComponent implements OnInit {
     height:500
   }
 
-  constructor() { }
+  constructor(public _service:BackendService) { }
 
   ngOnInit() {
-  }
-  genBase64(){
-    this.webcam.getBase64()
-    .then( base=>{this.base64=base; console.log(this.base64)})
-    .catch( e=>console.error(e) )
   }
 
   onCamError(err){}
@@ -32,15 +28,18 @@ export class CaptureComponent implements OnInit {
   onCamSuccess(){}
 
   captureImage() {
-    const video = <any>document.getElementsByTagName('video')[0];
-    const canvas = <any>document.getElementsByTagName('canvas')[0];
-    if (video) {
-      canvas.width = video.videoWidth;
-      canvas.height = video.videoHeight;
-      canvas.getContext('2d').drawImage(video, 0, 0);
+    this.webcam.getBase64()
+      .then( base=>{
+        this.base64=base.substr(base.indexOf(',')+1);
+        console.log(this.base64);
+        this._service.submitImage(this.base64).subscribe(x=>{
+            console.log(x);
+          },err=>{console.log(err)});
+      })
+      .catch( e=>console.error(e) )
 
-      console.log(canvas.toDataURL());
-    }
+
+
   };
 
 }
