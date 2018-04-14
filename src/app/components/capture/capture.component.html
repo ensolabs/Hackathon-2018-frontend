@@ -1,8 +1,14 @@
-<ack-webcam
-  [(ref)]   = "webcam"
-  [options] = "options"
-  (success) = "onCamSuccess()"
-  (catch)   = "onCamError($event)"
-></ack-webcam>
-<button mat-raised-button (click)="captureImage()">Ta bilde</button>
-<canvas style="display:none"></canvas>
+<div [ngClass]="{'hidden': showCapture}">
+  <ack-webcam
+    [(ref)]   = "webcam"
+    [options] = "options"
+    (success) = "onCamSuccess()"
+    (catch)   = "onCamError($event)"
+  ></ack-webcam>
+  <button mat-raised-button (click)="captureImage()">Ta bilde</button>
+</div>
+<div [ngClass]="{'hidden': !showCapture}">
+  <canvas id="preview"></canvas>
+  <button mat-raised-button (click)="discardImage()">Forkast</button>
+  <button mat-raised-button (click)="submitImage()">Submit</button>
+</div>
