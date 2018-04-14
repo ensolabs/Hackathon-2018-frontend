@@ -10,7 +10,6 @@ import { BackendService } from '../../services/backend.service';
 export class CaptureComponent implements OnInit {
 
   webcam:WebCamComponent//will be populated by <ack-webcam [(ref)]="webcam">
-  base64;
   public showCapture:boolean = false;
 
   options:any = {
@@ -23,10 +22,6 @@ export class CaptureComponent implements OnInit {
 
   ngOnInit() {
   }
-
-  onCamError(err){}
-
-  onCamSuccess(){}
 
   captureImage() {
 
@@ -44,33 +39,21 @@ export class CaptureComponent implements OnInit {
   }
 
   submitImage(){
-
     const canvas = <any>document.getElementsByTagName('canvas')[0];
-
-    const b = canvas.toDataURL();
-    this.base64=b.substr(b.indexOf(',')+1);
-    console.log(this.base64);
-    this._service.submitImage(this.base64).subscribe(x=>{
+    const dataURL = canvas.toDataURL();
+    const base64 = dataURL.substr(dataURL.indexOf(',') + 1);
+    console.log(base64);
+    this._service.submitImage(base64).subscribe(x=>{
         console.log(x);
       },err=>{console.log(err)});
-
-
-  /*  this.webcam.getBase64()
-      .then( base=>{
-        this.base64=base.substr(base.indexOf(',')+1);
-        console.log(this.base64);
-        this._service.submitImage(this.base64).subscribe(x=>{
-            console.log(x);
-          },err=>{console.log(err)});
-      })
-      .catch( e=>console.error(e) )*/
-
-
-
   };
 
   discardImage(){
     this.showCapture = false;
   }
+
+  onCamError(err){}
+
+  onCamSuccess(){}
 
 }
