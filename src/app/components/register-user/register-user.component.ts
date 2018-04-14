@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ZXingScannerComponent } from '@zxing/ngx-scanner';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'register-user',
@@ -21,7 +22,7 @@ export class RegisterUserComponent implements OnInit {
   availableDevices: MediaDeviceInfo[];
   selectedDevice: MediaDeviceInfo;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
     this.savedUser = localStorage.getItem("enso-qr-id")
@@ -47,8 +48,14 @@ export class RegisterUserComponent implements OnInit {
   }
 
   handleQrCodeResult(resultString: string) {
-    localStorage.setItem("enso-qr-id", resultString)
-    this.qrScanResult = resultString;
+    this.scanner.scannerEnabled = false;
+    const idConfirmed = confirm('Hei, ' + resultString + '?');
+    if (idConfirmed) {
+      localStorage.setItem("enso-qr-id", resultString);
+      this.router.navigate(['/score'])
+    } else {
+      this.scanner.scannerEnabled = true;
+    }
   }
 
 }
