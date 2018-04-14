@@ -24,23 +24,10 @@ export class RegisterUserComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.savedUser = localStorage.getItem("qr-data")
+    this.savedUser = localStorage.getItem("enso-qr-id")
     this.scanner.camerasFound.subscribe((devices: MediaDeviceInfo[]) => {
       this.hasCameras = true;
-
-      // nselects the devices's back camera by default
-      /*for (const device of devices) {
-        if (/back|rear|environment/gi.test(device.label)) {
-          this.scanner.changeDevice(device);
-          this.selectedDevice = device;
-          break;
-        }
-      }*/
     });
-
-    //this.scanner.scanComplete.subscribe((result: Result) => {
-    //    this.qrResult = result;
-    //});
   }
 
   displayCameras(cameras: MediaDeviceInfo[]) {
@@ -60,8 +47,7 @@ export class RegisterUserComponent implements OnInit {
   }
 
   handleQrCodeResult(resultString: string) {
-    console.log('Result: ', resultString);
-    localStorage.setItem("qr-data", resultString)
+    localStorage.setItem("enso-qr-id", resultString)
     this.qrScanResult = resultString;
   }
 
