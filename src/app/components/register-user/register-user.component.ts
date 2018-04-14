@@ -25,18 +25,18 @@ export class RegisterUserComponent implements OnInit {
 
   ngOnInit() {
     this.savedUser = localStorage.getItem("qr-data")
-    //this.scanner.camerasFound.subscribe((devices: MediaDeviceInfo[]) => {
-    //  this.hasCameras = true;
+    this.scanner.camerasFound.subscribe((devices: MediaDeviceInfo[]) => {
+      this.hasCameras = true;
 
-    // selects the devices's back camera by default
-    //for (const device of devices) {
-    //  if (/back|rear|environment/gi.test(device.label)) {
-    //    this.scanner.changeDevice(device);
-    //    this.selectedDevice = device;
-    //    break;
-    //  }
-    //}
-    //});
+      // nselects the devices's back camera by default
+      /*for (const device of devices) {
+        if (/back|rear|environment/gi.test(device.label)) {
+          this.scanner.changeDevice(device);
+          this.selectedDevice = device;
+          break;
+        }
+      }*/
+    });
 
     //this.scanner.scanComplete.subscribe((result: Result) => {
     //    this.qrResult = result;
@@ -46,7 +46,17 @@ export class RegisterUserComponent implements OnInit {
   displayCameras(cameras: MediaDeviceInfo[]) {
     console.log('Devices: ', cameras);
     this.availableDevices = cameras;
-    this.selectedDevice = this.scanner.getDeviceById(cameras[cameras.length - 1].deviceId); // FIXME antar at riktig kamera er sist i lista
+    for (const device of cameras) {
+      if (/back|rear|environment/gi.test(device.label)) {
+        this.scanner.changeDevice(device);
+        this.selectedDevice = device;
+        break;
+      }
+    }
+    // fallback
+    if (!this.selectedDevice) {
+      this.selectedDevice = this.scanner.getDeviceById(cameras[cameras.length - 1].deviceId); // FIXME antar at riktig kamera er sist i lista
+    }
   }
 
   handleQrCodeResult(resultString: string) {
