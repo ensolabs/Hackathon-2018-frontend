@@ -19,7 +19,7 @@ export class RegisteredCheckComponent implements OnInit, CanActivate {
     return true;
   }
   
-  constructor(public router: Router) { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }

@@ -7,6 +7,15 @@ export class BackendService {
 
   constructor(public client:HttpClient, public config:ConfigService) { }
   scoreStuff(){
-    return this.client.get(this.config.urlPostImage);
+    return this.client.post(
+            this.config.urlOwnScore,
+            {"email": "odne@enso.no"});
+  }
+
+   submitImage(img){
+    return this.client.post(
+            this.config.urlPostImage,
+            {"email": "le@gmail.com",
+              "image": img});
   }
 }
