@@ -10,16 +10,16 @@ import { Router } from '@angular/router';
 })
 export class CaptureComponent implements OnInit {
 
-  webcam:WebCamComponent//will be populated by <ack-webcam [(ref)]="webcam">
-  public showCapture:boolean = false;
+  webcam: WebCamComponent; // will be populated by <ack-webcam [(ref)]="webcam">
+  public showCapture = false;
 
-  options:any = {
-    video:true,
-    width:500,
-    height:500
-  }
+  options: any = {
+    video: true,
+    width: 500,
+    height: 500
+  };
 
-  constructor(public _service:BackendService, public router:Router) { }
+  constructor(public _service: BackendService, public router: Router) { }
 
   ngOnInit() {
   }
@@ -38,22 +38,22 @@ export class CaptureComponent implements OnInit {
 
   }
 
-  submitImage(){
+  submitImage() {
     const canvas = <any>document.getElementsByTagName('canvas')[0];
     const dataURL = canvas.toDataURL();
     const base64 = dataURL.substr(dataURL.indexOf(',') + 1);
     console.log(base64);
-    this._service.submitImage(base64).subscribe(x=>{
+    this._service.submitImage(base64).subscribe(x => {
         this.router.navigate(['score']);
-      },err=>{console.log(err)});
-  };
+      }, err => {console.log(err); });
+  }
 
-  discardImage(){
+  discardImage() {
     this.showCapture = false;
   }
 
-  onCamError(err){}
+  onCamError(err) {}
 
-  onCamSuccess(){}
+  onCamSuccess() {}
 
 }

@@ -5,7 +5,6 @@ import {MatButtonModule, MatCheckboxModule, MatFormFieldModule, MatInputModule,
   MatOptionModule, MatSelectModule, MatSlideToggleModule, MatCardModule, MatChipsModule,
   MatToolbarModule,  MatListModule, MatIconModule, MatProgressBarModule} from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
-import { ZXingScannerModule } from '@zxing/ngx-scanner';
 import { WebCamModule } from 'ack-angular-webcam';
 
 
@@ -22,6 +21,7 @@ import { RegisteredCheckComponent } from './components/registered-check/register
 import { CaptureComponent } from './components/capture/capture.component';
 import { AppLoadService } from './services/app-load.service';
 import { ConfigService } from './services/config.service';
+import { ZXingScannerModule } from './zxing/zxing-scanner.module';
 
 const appRoutes: Routes = [
   { path: 'score', component: ScoreComponent, canActivate: [RegisteredCheckComponent] },
