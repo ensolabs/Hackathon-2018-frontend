@@ -1,9 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, APP_INITIALIZER } from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatButtonModule, MatCheckboxModule,MatFormFieldModule,MatInputModule, MatOptionModule, MatSelectModule, MatSlideToggleModule, MatCardModule, MatChipsModule,
+import {MatButtonModule, MatCheckboxModule, MatFormFieldModule, MatInputModule,
+  MatOptionModule, MatSelectModule, MatSlideToggleModule, MatCardModule, MatChipsModule,
   MatToolbarModule,  MatListModule, MatIconModule, MatProgressBarModule} from '@angular/material';
-import {FlexLayoutModule} from "@angular/flex-layout";
+import {FlexLayoutModule} from '@angular/flex-layout';
 import { ZXingScannerModule } from '@zxing/ngx-scanner';
 import { WebCamModule } from 'ack-angular-webcam';
 
@@ -47,9 +48,9 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    MatButtonModule, MatCheckboxModule, MatFormFieldModule,MatInputModule,
-                MatOptionModule, MatSelectModule,MatSlideToggleModule,MatCardModule,
-                MatChipsModule, MatToolbarModule, MatIconModule,MatListModule,FlexLayoutModule,
+    MatButtonModule, MatCheckboxModule, MatFormFieldModule, MatInputModule,
+                MatOptionModule, MatSelectModule, MatSlideToggleModule, MatCardModule,
+                MatChipsModule, MatToolbarModule, MatIconModule, MatListModule, FlexLayoutModule,
                 MatProgressBarModule, WebCamModule,
                 HttpClientModule, RouterModule.forRoot(
                   appRoutes,
