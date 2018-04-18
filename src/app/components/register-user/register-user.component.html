@@ -1,22 +1,16 @@
 <div>
-  <p *ngIf="savedUser">
-    Welcome back, {{ savedUser }}
-  </p>
-  <p>
-    Scan result: {{ qrScanResult }}
-  </p>
-  <p>
-    Cameras:
-  </p>
-  <ul *ngFor="let cam of availableDevices">
-    <li>{{ cam.label }}</li>
-  </ul>
-  <zxing-scanner #scanner class="small-video"
-    [scannerEnabled]="scannerEnabled"
-    [autofocusEnabled]="autofocusEnabled"
-    [device]="selectedDevice"
-    [cssClass]="'small-video'"
-    (camerasFound)="displayCameras($event)"
-    (scanSuccess)="handleQrCodeResult($event)"
-  ></zxing-scanner>
+  <h2 class="mat-h2">Scan your badge</h2>
+  <mat-card>
+    <form class="example-form">
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Name" [(ngModel)]="user.userName" name="username">
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Email" [(ngModel)]="user.email" name="email">
+      </mat-form-field>
+    </form>
+    <zxing-scanner #scanner class="small-video" [scannerEnabled]="scannerEnabled" [autofocusEnabled]="autofocusEnabled" [device]="selectedDevice"
+      [cssClass]="'small-video'" (camerasFound)="displayCameras($event)" (scanSuccess)="handleQrCodeResult($event)"></zxing-scanner>
+      <button *ngIf="user.userName!=null&&user.email!=null" mat-raised-button (click)="start()">Start</button>
+  </mat-card>
 </div>

@@ -4,8 +4,8 @@ import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-registered-check',
-  templateUrl: './registered-check.component.html',
-  styleUrls: ['./registered-check.component.css']
+  template: '<div></div>',
+  styleUrls: []
 })
 export class RegisteredCheckComponent implements OnInit, CanActivate {
 

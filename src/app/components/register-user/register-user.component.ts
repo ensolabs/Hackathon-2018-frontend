@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { ZXingScannerComponent } from '../../zxing/zxing-scanner.component';
+import { UserInfo } from '../../model/all';
 
 @Component({
   selector: 'app-register-user',
@@ -11,7 +12,7 @@ export class RegisterUserComponent implements OnInit {
 
   @ViewChild('scanner')
   scanner: ZXingScannerComponent;
-
+  public user: UserInfo = new UserInfo(null, null);
   savedUser: string;
 
   hasCameras = false;
@@ -48,13 +49,18 @@ export class RegisterUserComponent implements OnInit {
   handleQrCodeResult(resultString: string) {
     this.scanner.changeDevice(null);
     this.scanner.scannerEnabled = false;
-    const idConfirmed = confirm('Hei, ' + resultString + '?');
-    if (idConfirmed) {
-      localStorage.setItem('enso-qr-id', resultString);
-      this.router.navigate(['/score']);
-    } else {
-      this.scanner.scannerEnabled = true;
-    }
+    this.user = new UserInfo('Ole Dole', 'ole@dole.com');
+    // const idConfirmed = confirm('Hei, ' + resultString + '?');
+    // if (idConfirmed) {
+    //   localStorage.setItem('enso-qr-id', JSON.stringify(new UserInfo('Ole Dole', 'ole@dole.com')));
+    //   this.router.navigate(['/userConfirm']);
+    // } else {
+    //   this.scanner.scannerEnabled = true;
+    // }
+  }
+  start() {
+    localStorage.setItem('enso-qr-id', JSON.stringify(this.user));
+    this.router.navigate(['/score']);
   }
 
 }

@@ -22,6 +22,7 @@ import { CaptureComponent } from './components/capture/capture.component';
 import { AppLoadService } from './services/app-load.service';
 import { ConfigService } from './services/config.service';
 import { ZXingScannerModule } from './zxing/zxing-scanner.module';
+import { FormsModule } from '@angular/forms';
 
 const appRoutes: Routes = [
   { path: 'score', component: ScoreComponent, canActivate: [RegisteredCheckComponent] },
@@ -48,6 +49,7 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    FormsModule,
     MatButtonModule, MatCheckboxModule, MatFormFieldModule, MatInputModule,
                 MatOptionModule, MatSelectModule, MatSlideToggleModule, MatCardModule,
                 MatChipsModule, MatToolbarModule, MatIconModule, MatListModule, FlexLayoutModule,
