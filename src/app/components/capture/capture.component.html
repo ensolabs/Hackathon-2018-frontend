@@ -1,14 +1,26 @@
-<div [ngClass]="{'hidden': showCapture}">
-  <ack-webcam
-    [(ref)]   = "webcam"
-    [options] = "options"
-    (success) = "onCamSuccess()"
-    (catch)   = "onCamError($event)"
-  ></ack-webcam>
-  <button mat-raised-button (click)="captureImage()">Ta bilde</button>
-</div>
-<div [ngClass]="{'hidden': !showCapture}">
-  <canvas id="preview"></canvas>
-  <button mat-raised-button (click)="discardImage()">Forkast</button>
-  <button mat-raised-button (click)="submitImage()">Submit</button>
+
+  <div [ngClass]="{'hidden': showCapture}">
+    <div fxLayout="column" fxLayoutAlign="space-around center">
+    <div fxflex="80">
+      <ack-webcam
+        [(ref)]   = "webcam"
+        [options] = "options"
+        [facingMode] = "facingMode"
+        [useParentWidthHeight] = "useParentWidthHeight"
+        (success) = "onCamSuccess()"
+        (catch)   = "onCamError($event)"
+      ></ack-webcam>
+    </div>
+    <button mat-raised-button (click)="captureImage()">Ta bilde</button>
+  </div>
+  </div>
+
+  <div [ngClass]="{'hidden': !showCapture}">
+    <div fxLayout="column" fxLayoutAlign="space-around center">
+    <canvas fxflex="80" id="preview"></canvas>
+    <div fxLayout="row">
+      <button mat-raised-button (click)="discardImage()">Forkast</button>
+      <button mat-raised-button (click)="submitImage()">Submit</button>
+    </div>
+  </div>
 </div>

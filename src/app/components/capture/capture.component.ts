@@ -14,10 +14,11 @@ export class CaptureComponent implements OnInit {
   public showCapture = false;
 
   options: any = {
-    video: true,
-    width: 500,
-    height: 500
+    video: true
   };
+
+  facingMode = "environment";
+  useParentWidthHeight = true;
 
   constructor(public _service: BackendService, public router: Router) { }
 
@@ -29,9 +30,11 @@ export class CaptureComponent implements OnInit {
     const video = <any>document.getElementsByTagName('video')[0];
     const canvas = <any>document.getElementsByTagName('canvas')[0];
     if (video) {
-      canvas.width = video.videoWidth;
-      canvas.height = video.videoHeight;
-      canvas.getContext('2d').drawImage(video, 0, 0);
+      canvas.width = video.width;
+      canvas.height = video.height;
+      canvas.getContext('2d').drawImage(video, 0, 0, video.videoWidth, video.videoHeight,
+                                        0, 0, canvas.width, canvas.height);
+
     }
 
     this.showCapture = true;
