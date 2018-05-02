@@ -1,3 +1,19 @@
-<p>
-  admin works!
-</p>
+<div fxLayout="column">
+<mat-form-field>
+    <input matInput type="text" placeholder="New Task" [(ngModel)]="newTask"/>
+    <button mat-button *ngIf="newTask" matSuffix mat-icon-button aria-label="Post" (click)="post()">
+      <mat-icon>send</mat-icon>
+    </button>
+    <mat-hint align="start"><strong>name,keyword,keyword,score</strong> </mat-hint>
+  </mat-form-field>
+  <mat-list>
+    <mat-list-item *ngFor="let task of tasks">
+      <h3 matLine> {{task.Name}} </h3>
+      <p matLine>
+        <span> {{task.Score}} </span>
+        <span class="demo-2"> -- {{getKeywords(task)}} </span>
+      </p>
+      <mat-icon>delete</mat-icon>
+    </mat-list-item>
+  </mat-list>
+  </div> 
