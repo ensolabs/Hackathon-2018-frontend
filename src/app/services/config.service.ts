@@ -6,7 +6,7 @@ export class ConfigService {
   public urlOwnScore: string;
   public urlHighScore: string;
   public urlGetTasks: string;
-  public urlUpdateTask; string;
+  public urlUpdateTask: string;
+  public urlDeleteTask: string;
   constructor() { }
-
 }

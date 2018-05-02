@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ConfigService } from './config.service';
-import { ScoreResult, Task } from '../model/all';
+import { ScoreResult, Task, DeleteTaskRequest } from '../model/all';
 
 @Injectable()
 export class BackendService {
@@ -25,7 +25,10 @@ export class BackendService {
     return this.client.get<Task[]>(this.config.urlGetTasks);
   }
   newTask(task: Task) {
-    console.log(this.headers);
     return this.client.post(this.config.urlUpdateTask, JSON.stringify(task), {headers: this.headers});
+  }
+  deleteTask(partitionKey: string, rowKey: string) {
+    return this.client.post(this.config.urlDeleteTask,
+      JSON.stringify({PartitionKey: partitionKey, RowKey: rowKey }), {headers: this.headers});
   }
 }

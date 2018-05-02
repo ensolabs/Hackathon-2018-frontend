@@ -15,6 +15,7 @@ export class AppLoadService {
         this.configService.urlPostImage = settings['urlPostImage'];
         this.configService.urlGetTasks = settings['urlGetTasks'];
         this.configService.urlUpdateTask = settings['urlUpdateTask'];
+        this.configService.urlDeleteTask = settings['urlDeleteTask'];
         return settings;
       });
     return promise;
