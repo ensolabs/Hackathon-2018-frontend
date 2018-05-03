@@ -1,0 +1,9 @@
+<h2 class="mat-display-1">Predictions</h2>
+<div *ngFor="let prediction of result.predictedAnswer.Predictions">
+  {{prediction.Tag}}: {{prediction.Probability}}
+</div>
+
+<h2 class="mat-display-1">Tags</h2>
+<div *ngFor="let prediction of result.cognitiveAnswer.tags">
+  {{prediction.name}}: {{prediction.confidence}}
+</div>
