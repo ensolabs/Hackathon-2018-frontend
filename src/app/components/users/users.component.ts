@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserInfo } from '../../model/all';
+import { UserInfo, AdminUser } from '../../model/all';
 import { BackendService } from '../../services/backend.service';
 
 @Component({
@@ -12,10 +12,11 @@ export class UsersComponent implements OnInit {
   constructor(private _service: BackendService) { }
 
   ngOnInit() {
-    this.users = [new UserInfo('Gunnis', 'gunn@is.com', 102, false),
-    new UserInfo('Lasse', 'las@se.com', 101, true),
-    new UserInfo('Gunnis', 'gunn@is.com', 90, false),
-    ];
+
+
+    this._service.getUsers().subscribe(x => {
+      this.users = x.map(y => new UserInfo(y.Email, y.Email, Number(y.Score), y.HasGotPrice === 'True'));
+    }, err => console.log(err));
   }
   getIcon(hasReceived: boolean): string {
     return hasReceived ? 'checked' : 'stars';

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ConfigService } from './config.service';
-import { ScoreResult, Task, DeleteTaskRequest } from '../model/all';
+import { ScoreResult, Task, DeleteTaskRequest, AdminUser } from '../model/all';
 
 @Injectable()
 export class BackendService {
@@ -36,5 +36,8 @@ export class BackendService {
   gotPrice(email: string, gotPrice: boolean) {
     return this.client.post(this.config.urlGotPrice, JSON.stringify({ email: email, gotPrice: gotPrice }),
       { headers: this.headers });
+  }
+  getUsers() {
+    return this.client.get<AdminUser[]>(this.config.urlHighScore);
   }
 }
