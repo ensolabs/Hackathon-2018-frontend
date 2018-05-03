@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserInfo } from '../../model/all';
+import { BackendService } from '../../services/backend.service';
 
 @Component({
   selector: 'app-users',
@@ -8,7 +9,7 @@ import { UserInfo } from '../../model/all';
 })
 export class UsersComponent implements OnInit {
   users: Array<UserInfo> = new Array<UserInfo>();
-  constructor() { }
+  constructor(private _service: BackendService) { }
 
   ngOnInit() {
     this.users = [new UserInfo('Gunnis', 'gunn@is.com', 102, false),
@@ -20,6 +21,12 @@ export class UsersComponent implements OnInit {
     return hasReceived ? 'checked' : 'stars';
   }
   receive(user: UserInfo) {
-    user.receivedPrice = !user.receivedPrice;
+    if (user.score > 99) {
+      this._service.gotPrice(user.email, !user.receivedPrice)
+        .subscribe(x => { user.receivedPrice = !user.receivedPrice; }, err => { console.log(err); });
+    }
+  }
+  isClickable(user: UserInfo): boolean {
+    return user.score > 99;
   }
 }
