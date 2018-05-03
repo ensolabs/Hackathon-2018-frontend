@@ -5,14 +5,17 @@ import { ConfigService } from './config.service';
 
 @Injectable()
 export class AppLoadService {
-  constructor(private httpClient: HttpClient, public configService:ConfigService) { }
+  constructor(private httpClient: HttpClient, public configService: ConfigService) { }
   public getSettings(): Promise<any> {
     const promise = this.httpClient.get('assets/config.json')
       .toPromise()
-      .then(settings=> {
-        this.configService.urlHighScore = settings["urlHighScore"];
-        this.configService.urlOwnScore = settings["urlOwnScore"];
-        this.configService.urlPostImage = settings["urlPostImage"];
+      .then(settings => {
+        this.configService.urlHighScore = settings['urlHighScore'];
+        this.configService.urlOwnScore = settings['urlOwnScore'];
+        this.configService.urlPostImage = settings['urlPostImage'];
+        this.configService.urlGetTasks = settings['urlGetTasks'];
+        this.configService.urlUpdateTask = settings['urlUpdateTask'];
+        this.configService.urlDeleteTask = settings['urlDeleteTask'];
         return settings;
       });
     return promise;
