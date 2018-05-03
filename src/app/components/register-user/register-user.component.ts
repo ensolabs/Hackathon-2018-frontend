@@ -12,7 +12,7 @@ export class RegisterUserComponent implements OnInit {
 
   @ViewChild('scanner')
   scanner: ZXingScannerComponent;
-  public user: UserInfo = new UserInfo(null, null);
+  public user: UserInfo = new UserInfo(null, null, 0, false);
   savedUser: string;
 
   hasCameras = false;
@@ -49,7 +49,7 @@ export class RegisterUserComponent implements OnInit {
   handleQrCodeResult(resultString: string) {
     this.scanner.changeDevice(null);
     this.scanner.scannerEnabled = false;
-    this.user = new UserInfo('Ole Dole', 'ole@dole.com');
+    this.user = new UserInfo('Ole Dole', 'ole@dole.com', 0, false);
     // const idConfirmed = confirm('Hei, ' + resultString + '?');
     // if (idConfirmed) {
     //   localStorage.setItem('enso-qr-id', JSON.stringify(new UserInfo('Ole Dole', 'ole@dole.com')));
