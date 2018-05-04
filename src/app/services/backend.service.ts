@@ -12,13 +12,13 @@ export class BackendService {
   scoreStuff() {
     return this.client.post<ScoreResult>(
             this.config.urlOwnScore,
-            {'email': 'le@gmail.com'});
+            {'email': localStorage.getItem('enso-qr-id')});
   }
 
    submitImage(img) {
     return this.client.post(
             this.config.urlPostImage,
-            {'email': 'le@gmail.com',
+            {'email': localStorage.getItem('enso-qr-id'),
               'image': img});
   }
   getTasks() {
