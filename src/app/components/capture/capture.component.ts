@@ -47,7 +47,6 @@ export class CaptureComponent implements OnInit {
     const canvas = <any>document.getElementsByTagName('canvas')[0];
     const dataURL = canvas.toDataURL();
     const base64 = dataURL.substr(dataURL.indexOf(',') + 1);
-    console.log(base64);
     this.showSpinner = true;
     this._service.submitImage(base64).subscribe(x => {
       console.log(x);
@@ -61,7 +60,11 @@ export class CaptureComponent implements OnInit {
       this.dialog.open(ResultDialogComponent, dialogConfig);
       this.showSpinner = false;
       this.router.navigate(['score']);
-    }, err => { console.log(err); });
+    }, err => { 
+      alert("Something went wrong..." + err.message); 
+      this.showSpinner = false;
+    });
+      
   }
 
   discardImage() {
