@@ -3,7 +3,8 @@ import { NgModule, APP_INITIALIZER } from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatButtonModule, MatCheckboxModule, MatFormFieldModule, MatInputModule,
   MatOptionModule, MatSelectModule, MatSlideToggleModule, MatCardModule, MatChipsModule,
-  MatToolbarModule,  MatListModule, MatIconModule, MatProgressBarModule, MatDialogModule, MatSpinner, MatProgressSpinnerModule} from '@angular/material';
+  MatToolbarModule,  MatListModule, MatIconModule, MatProgressBarModule, MatDialogModule,
+  MatSpinner, MatProgressSpinnerModule} from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import { WebCamModule } from 'ack-angular-webcam';
 
@@ -60,7 +61,7 @@ const appRoutes: Routes = [
     MatButtonModule, MatCheckboxModule, MatFormFieldModule, MatInputModule,
                 MatOptionModule, MatSelectModule, MatSlideToggleModule, MatCardModule,
                 MatChipsModule, MatToolbarModule, MatIconModule, MatListModule, FlexLayoutModule,
-                MatProgressBarModule, WebCamModule, MatDialogModule, MatProgressSpinnerModule, 
+                MatProgressBarModule, WebCamModule, MatDialogModule, MatProgressSpinnerModule,
                 HttpClientModule, RouterModule.forRoot(
                   appRoutes,
                   { enableTracing: false } // <-- debugging purposes only

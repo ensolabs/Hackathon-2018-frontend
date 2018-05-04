@@ -62,5 +62,4 @@ export class RegisterUserComponent implements OnInit {
     localStorage.setItem('enso-qr-id', JSON.stringify(this.user));
     this.router.navigate(['/score']);
   }
-
 }

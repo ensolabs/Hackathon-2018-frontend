@@ -18,9 +18,9 @@ export class CaptureComponent implements OnInit {
 
   options: any = {
     video: true
-  };
+    };
 
-  facingMode = "environment";
+  facingMode = 'environment';
   useParentWidthHeight = true;
 
   constructor(public _service: BackendService, public router: Router, private dialog: MatDialog) { }

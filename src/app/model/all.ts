@@ -3,3 +3,4 @@ export * from './ScoreResult';
 export * from './userInfo';
 export * from './task';
 export * from './delete-task-request';
+export * from './admin-user';

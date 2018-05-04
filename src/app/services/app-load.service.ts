@@ -16,6 +16,7 @@ export class AppLoadService {
         this.configService.urlGetTasks = settings['urlGetTasks'];
         this.configService.urlUpdateTask = settings['urlUpdateTask'];
         this.configService.urlDeleteTask = settings['urlDeleteTask'];
+        this.configService.urlGotPrice = settings['urlGotPrice'];
         return settings;
       });
     return promise;

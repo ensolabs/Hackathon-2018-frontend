@@ -8,5 +8,6 @@ export class ConfigService {
   public urlGetTasks: string;
   public urlUpdateTask: string;
   public urlDeleteTask: string;
+  public urlGotPrice: string;
   constructor() { }
 }
