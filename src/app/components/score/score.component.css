@@ -1,3 +1,26 @@
 .progressScore {
   margin-left: auto;
 }
+
+.mat-column-name {
+  flex: 0 0 89%;
+}
+
+.mat-column-score {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.scoreboard {
+  margin-top: 3em;
+  margin-bottom: auto;
+}
+
+.textbox {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.capture-button {
+  margin-top: 10em;
+}

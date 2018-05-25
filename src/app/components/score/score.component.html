@@ -1,27 +1,41 @@
-
 <div class="page" fxLayout="column">
+  <div fxLayout="row" class="textbox">
+    <div class="mat-body-1">Velkommen til Scan'o'rama! Her gjelder det å ta bilde av de riktige tingene! Ta bilder med appen og få poeng dersom vi
+      kjenner igjen det du tar bilde av. På standen vår står noen av tingene du kan få poeng for listet opp, men det e rogså
+      en del andre ting som er poenggivende, så her er det bare å knipse i vei! :)</div>
+  </div>
 
-  <h1 class="mat-display-1">Score</h1>
+  <div fxLayout="row" class="textbox">
+    <div class="mat-body-1">Når du har fått minst {{priceScore}} poeng så kom til standen å få deg en premie!</div>
+  </div>
 
-  <div fxLayout="column">
+  <div fxLayout="column" class="textbox">
     <div fxLayout="row">
-      <div class="mat-body-1">PriceProgress</div>
+      <div class="mat-body-1">Antall poeng / poeng du trenger for å få premie</div>
       <div class="progressScore mat-body-1">{{totalScore}}/{{priceScore}}</div>
     </div>
     <mat-progress-bar mode="determinate" value="{{totalScore}}"></mat-progress-bar>
   </div>
 
-  <mat-list>
-    <mat-list-item *ngFor="let score of scores">
-      <div class="scoreEntryList" style="width:100%">
-        <div fxLayout="row" fxLayoutAlign="space-around center" >
-          <!--<mat-icon mat-list-icon>{{score.image}}</mat-icon>-->
-          <div fxFill> {{score.name}} </div>
-          <div> {{score.score}} </div>
-        </div>
-      </div>
-    </mat-list-item>
-  </mat-list>
 
-  <a mat-raised-button routerLink="/capture">Ta bilde</a>
+  <mat-table class="scoreboard" #table [dataSource]="scores">
+
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> Beskrivelse </mat-header-cell>
+      <mat-cell *matCellDef="let score">{{score.name}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="score">
+      <mat-header-cell *matHeaderCellDef> Poeng </mat-header-cell>
+      <mat-cell *matCellDef="let score">{{score.score}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
+
+
+  <a class="capture-button" mat-raised-button routerLink="/capture">Ta et nytt bilde</a>
+
 </div>
