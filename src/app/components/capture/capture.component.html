@@ -9,7 +9,7 @@
 
 <div [ngClass]="{'hidden': !showCapture || showSpinner}">
   <div fxLayout="column" fxLayoutAlign="space-around center">
-    <canvas fxFlex="80" id="preview"></canvas>
+    <canvas fxFlex id="preview"></canvas>
     <div fxLayout="row" fxLayoutAlign="space-around center" class="myButton" fxFill>
       <button mat-raised-button (click)="discardImage()">Forkast</button>
       <button mat-raised-button (click)="submitImage()">Send inn</button>
