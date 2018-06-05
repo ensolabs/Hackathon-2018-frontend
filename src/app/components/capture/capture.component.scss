@@ -1,0 +1,15 @@
+@import '~material-bottom-nav';
+
+.bottom-nav {
+  @include bottom-nav($background-color: #009688, $active-color: #FFFFFF, $inactive-color: #E0E0E0, $hide-inactive-labels: true);
+}
+.hidden {
+  display: none;
+}
+.myButton {
+  padding: 20px;
+}
+.myButton2 {
+  margin:20px;
+}
+

@@ -33,9 +33,9 @@
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </mat-table>
-
-
-
-  <a class="capture-button" mat-raised-button routerLink="/capture">Ta et nytt bilde</a>
-
 </div>
+<nav class="bottom-nav">
+  <button mat-fab color="warn" (click)="goToCamera()">
+    <mat-icon>camera_alt</mat-icon>
+  </button>
+</nav>

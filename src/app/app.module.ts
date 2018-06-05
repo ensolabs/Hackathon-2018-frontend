@@ -1,6 +1,6 @@
-import { BrowserModule } from "@angular/platform-browser";
-import { NgModule, APP_INITIALIZER } from "@angular/core";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   MatButtonModule,
   MatCheckboxModule,
@@ -19,53 +19,53 @@ import {
   MatSpinner,
   MatProgressSpinnerModule,
   MatTableModule
-} from "@angular/material";
-import { FlexLayoutModule } from "@angular/flex-layout";
-import { WebCamModule } from "ack-angular-webcam";
+} from '@angular/material';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { WebCamModule } from 'ack-angular-webcam';
 
-import { AppComponent } from "./app.component";
-import { ScoreComponent } from "./components/score/score.component";
-import { BackendService } from "./services/backend.service";
-import { HttpClientModule } from "@angular/common/http";
+import { AppComponent } from './app.component';
+import { ScoreComponent } from './components/score/score.component';
+import { BackendService } from './services/backend.service';
+import { HttpClientModule } from '@angular/common/http';
 
-import { RouterModule, Routes, Router } from "@angular/router";
-import { AdminComponent } from "./components/admin/admin.component";
-import { PageNotFoundComponent } from "./components/page-not-found/page-not-found.component";
-import { RegisterUserComponent } from "./components/register-user/register-user.component";
-import { RegisteredCheckComponent } from "./components/registered-check/registered-check.component";
-import { CaptureComponent } from "./components/capture/capture.component";
-import { AppLoadService } from "./services/app-load.service";
-import { ConfigService } from "./services/config.service";
-import { ZXingScannerModule } from "./zxing/zxing-scanner.module";
-import { FormsModule } from "@angular/forms";
-import { ResultDialogComponent } from "./components/result-dialog/result-dialog.component";
-import { UsersComponent } from "./components/users/users.component";
-import { AdminUserCheckComponent } from "./components/admin-user-check/admin-user-check.component";
+import { RouterModule, Routes, Router } from '@angular/router';
+import { AdminComponent } from './components/admin/admin.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { RegisterUserComponent } from './components/register-user/register-user.component';
+import { RegisteredCheckComponent } from './components/registered-check/registered-check.component';
+import { CaptureComponent } from './components/capture/capture.component';
+import { AppLoadService } from './services/app-load.service';
+import { ConfigService } from './services/config.service';
+import { ZXingScannerModule } from './zxing/zxing-scanner.module';
+import { FormsModule } from '@angular/forms';
+import { ResultDialogComponent } from './components/result-dialog/result-dialog.component';
+import { UsersComponent } from './components/users/users.component';
+import { AdminUserCheckComponent } from './components/admin-user-check/admin-user-check.component';
 
 const appRoutes: Routes = [
   {
-    path: "score",
+    path: 'score',
     component: ScoreComponent,
     canActivate: [RegisteredCheckComponent]
   },
-  { path: "register", component: RegisterUserComponent },
-  { path: "capture", component: CaptureComponent },
+  { path: 'register', component: RegisterUserComponent },
+  { path: 'capture', component: CaptureComponent },
   {
-    path: "users",
+    path: 'users',
     component: UsersComponent,
     canActivate: [AdminUserCheckComponent]
   },
   {
-    path: "admin",
+    path: 'admin',
     component: AdminComponent,
     canActivate: [AdminUserCheckComponent]
   },
   {
-    path: "",
-    redirectTo: "/score",
-    pathMatch: "full"
+    path: '',
+    redirectTo: '/score',
+    pathMatch: 'full'
   },
-  { path: "**", component: PageNotFoundComponent }
+  { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ConfigService } from './config.service';
-import { ScoreResult, Task, DeleteTaskRequest, AdminUser } from '../model/all';
+import { ScoreResult, Task, DeleteTaskRequest, AdminUser, UserInfo } from '../model/all';
 
 @Injectable()
 export class BackendService {
@@ -16,10 +16,13 @@ export class BackendService {
   }
 
   submitImage(img) {
+    const user = JSON.parse( localStorage.getItem('enso-qr-id')) as UserInfo;
     return this.client.post(
       this.config.urlPostImage,
       {
-        'email': localStorage.getItem('enso-qr-id'),
+        'email': user.id,
+        'id': user.id,
+        'name': user.firstName,
         'image': img
       });
   }

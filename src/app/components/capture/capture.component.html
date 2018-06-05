@@ -4,16 +4,15 @@
       <ack-webcam [(ref)]="webcam" [options]="options" [facingMode]="facingMode" [useParentWidthHeight]="useParentWidthHeight"
         (success)="onCamSuccess()" (catch)="onCamError($event)"></ack-webcam>
     </div>
-    <button mat-raised-button (click)="captureImage()">Ta bilde</button>
   </div>
 </div>
 
 <div [ngClass]="{'hidden': !showCapture || showSpinner}">
   <div fxLayout="column" fxLayoutAlign="space-around center">
-    <canvas fxflex="80" id="preview"></canvas>
-    <div fxLayout="row">
+    <canvas fxFlex="80" id="preview"></canvas>
+    <div fxLayout="row" fxLayoutAlign="space-around center" class="myButton" fxFill>
       <button mat-raised-button (click)="discardImage()">Forkast</button>
-      <button mat-raised-button (click)="submitImage()">Submit</button>
+      <button mat-raised-button (click)="submitImage()">Send inn</button>
     </div>
   </div>
 </div>
@@ -23,3 +22,8 @@
     <mat-spinner></mat-spinner>
   </div>
 </div>
+<nav class="bottom-nav">
+  <button mat-fab color="warn"  (click)="captureImage()">
+    <mat-icon>camera</mat-icon>
+  </button>
+</nav>

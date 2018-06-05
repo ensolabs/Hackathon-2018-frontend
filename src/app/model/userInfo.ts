@@ -1,3 +1,3 @@
 export class UserInfo {
-    constructor(public userName: string, public email: string, public score: number, public receivedPrice: boolean) {}
+    constructor(public firstName: string, public id: string, public score: number, public receivedPrice: boolean) {}
 }

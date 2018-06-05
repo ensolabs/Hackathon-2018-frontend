@@ -23,7 +23,7 @@ export class UsersComponent implements OnInit {
   }
   receive(user: UserInfo) {
     if (user.score > 99) {
-      this._service.gotPrice(user.email, !user.receivedPrice)
+      this._service.gotPrice(user.id, !user.receivedPrice)
         .subscribe(x => { user.receivedPrice = !user.receivedPrice; }, err => { console.log(err); });
     }
   }

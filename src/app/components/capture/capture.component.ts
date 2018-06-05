@@ -8,7 +8,7 @@ import { ResultDialogComponent } from '../result-dialog/result-dialog.component'
 @Component({
   selector: 'app-capture',
   templateUrl: './capture.component.html',
-  styleUrls: ['./capture.component.css']
+  styleUrls: ['./capture.component.scss']
 })
 export class CaptureComponent implements OnInit {
 
@@ -60,7 +60,7 @@ export class CaptureComponent implements OnInit {
       this.dialog.open(ResultDialogComponent, dialogConfig);
       this.showSpinner = false;
       this.router.navigate(['score']);
-    }, err => { 
+    }, err => {
       alert("Something went wrong..." + err.message); 
       this.showSpinner = false;
     });

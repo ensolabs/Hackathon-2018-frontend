@@ -1,16 +1,13 @@
 <div>
   <h2 class="mat-h2">Scan your badge</h2>
   <mat-card>
-    <form class="example-form">
-      <mat-form-field class="example-full-width">
-        <input matInput placeholder="Name" [(ngModel)]="user.userName" name="username">
-      </mat-form-field>
-      <mat-form-field class="example-full-width">
-        <input matInput placeholder="Email" [(ngModel)]="user.email" name="email">
-      </mat-form-field>
-    </form>
     <zxing-scanner #scanner class="small-video" [scannerEnabled]="scannerEnabled" [autofocusEnabled]="autofocusEnabled" [device]="selectedDevice"
       [cssClass]="'small-video'" (camerasFound)="displayCameras($event)" (scanSuccess)="handleQrCodeResult($event)"></zxing-scanner>
-      <button *ngIf="user.userName!=null&&user.email!=null" mat-raised-button (click)="start()">Start</button>
+    <div *ngIf="user.id!=null&&user.firstName!=null" fxLayout="row" class="bottomRow" fxLayoutAlign="space-around center">
+      <div fxFlex>Welcome {{user.firstName}}! </div>
+      <div>
+        <button mat-raised-button (click)="start()">Begin the fun</button>
+      </div>
+    </div>
   </mat-card>
 </div>

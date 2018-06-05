@@ -12,7 +12,7 @@ export class AdminUserCheckComponent implements CanActivate {
     const user = JSON.parse(u) as UserInfo;
     console.log(user);
     const regexp = new RegExp('@enso.no$');
-    return regexp.test(user.email);
+    return regexp.test(user.id);
   }
   constructor() { }
 }
