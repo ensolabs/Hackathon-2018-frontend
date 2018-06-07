@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
-  links: string[]=['http://www.vg.no'];
+  links: string[] = ['http://www.vg.no'];
 }
