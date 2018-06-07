@@ -1,8 +1,8 @@
-import { Component, OnInit } from "@angular/core";
-import { BackendService } from "../../services/backend.service";
-import { ScoreEntry } from "../../model/all";
-import { MatTableDataSource } from "@angular/material";
-import { Router } from "@angular/router";
+import { Component, OnInit } from '@angular/core';
+import { BackendService } from '../../services/backend.service';
+import { ScoreEntry } from '../../model/all';
+import { MatTableDataSource } from '@angular/material';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-score',
@@ -21,7 +21,6 @@ export class ScoreComponent implements OnInit {
   ngOnInit() {
     this._service.scoreStuff().subscribe(
       x => {
-        console.log(x);
         this.priceScore = x.priceScore;
         this.totalScore = x.totalScore;
         this.scores = x.scoredTasks;
@@ -30,8 +29,5 @@ export class ScoreComponent implements OnInit {
         console.log(err);
       }
     );
-  }
-  goToCamera() {
-    this.router.navigate(['/capture']);
   }
 }

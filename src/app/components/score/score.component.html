@@ -34,8 +34,4 @@
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </mat-table>
 </div>
-<nav class="bottom-nav">
-  <button mat-fab color="warn" (click)="goToCamera()">
-    <mat-icon>camera_alt</mat-icon>
-  </button>
-</nav>
+<a mat-fab class="custom-button"  routerLink="/capture"> <mat-icon>camera_alt</mat-icon></a>

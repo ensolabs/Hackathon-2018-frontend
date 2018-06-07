@@ -1,22 +1,9 @@
-<div style="position: fixed;
-width: 100%;
-height: 100%;
-left: 0;
-top: 100px;
-z-index: 10;" [ngClass]="{'hidden': showCapture || showSpinner}">
-
-<ack-webcam [(ref)]="webcam" [options]="options" [facingMode]="facingMode" [useParentWidthHeight]="useParentWidthHeight"
-        (success)="onCamSuccess()" (catch)="onCamError($event)" style="width: 100%; height: 100%;"></ack-webcam>
+<div [ngClass]="{'hidden': showCapture || showSpinner}">
+  <ack-webcam [(ref)]="webcam" [options]="options" [facingMode]="facingMode" (success)="onCamSuccess()" (catch)="onCamError($event)"></ack-webcam>
 </div>
 
-<div [ngClass]="{'hidden': !showCapture || showSpinner}">
-  <div fxLayout="column" fxLayoutAlign="space-around center">
-    <canvas fxFlex id="preview"></canvas>
-    <div fxLayout="row" fxLayoutAlign="space-around center" class="myButton" fxFill>
-      <button mat-raised-button (click)="discardImage()">Forkast</button>
-      <button mat-raised-button (click)="submitImage()">Send inn</button>
-    </div>
-  </div>
+<div fxLayout="column" [ngClass]="{'hidden': !showCapture || showSpinner}">
+  <canvas fxFlex id="preview" [ngClass]="{'hidden': !showCapture || showSpinner}"></canvas>
 </div>
 
 <div [ngClass]="{'hidden': !showSpinner}">
@@ -25,7 +12,20 @@ z-index: 10;" [ngClass]="{'hidden': showCapture || showSpinner}">
   </div>
 </div>
 <nav class="bottom-nav">
-  <button mat-fab color="warn"  (click)="captureImage()">
-    <mat-icon>camera</mat-icon>
-  </button>
+  <div [ngClass]="{'hidden': showCapture }">
+    <button mat-fab color="warn" (click)="captureImage()">
+      <mat-icon>camera</mat-icon>
+    </button>
+  </div>
+  <div [ngClass]="{'hidden': !showCapture }" fxFill>
+    <div fxLayout="row" fxLayoutAlign="center" fxFill>
+      <button mat-fab color="warn" (click)="discardImage()">
+        <mat-icon>delete</mat-icon>
+      </button>
+      <div fxFlex="10"></div>
+      <button mat-fab color="warn" (click)="submitImage()">
+        <mat-icon>send</mat-icon>
+      </button>
+    </div>
+  </div>
 </nav>

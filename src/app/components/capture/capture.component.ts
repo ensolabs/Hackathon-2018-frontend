@@ -17,11 +17,14 @@ export class CaptureComponent implements OnInit {
   public showSpinner = false;
 
   options: any = {
-    video: true
+    video: true,
+    useParentWidthHeight: false,
+    height: 500,
+    width: 800
     };
 
   facingMode = 'environment';
-  useParentWidthHeight = true;
+  useParentWidthHeight = false;
 
   constructor(public _service: BackendService, public router: Router, private dialog: MatDialog) { }
 
@@ -29,18 +32,16 @@ export class CaptureComponent implements OnInit {
   }
 
   captureImage() {
+    this.webcam.captureAsFormData();
     const video = <any>document.getElementsByTagName('video')[0];
     const canvas = <any>document.getElementsByTagName('canvas')[0];
     if (video) {
-      canvas.width = video.width;
-      canvas.height = video.height;
+       canvas.width = video.videoWidth;
+       canvas.height = video.videoHeight * 0.7;
       canvas.getContext('2d').drawImage(video, 0, 0, video.videoWidth, video.videoHeight,
         0, 0, canvas.width, canvas.height);
-
     }
-
     this.showCapture = true;
-
   }
 
   submitImage() {
@@ -61,10 +62,9 @@ export class CaptureComponent implements OnInit {
       this.showSpinner = false;
       this.router.navigate(['score']);
     }, err => {
-      alert("Something went wrong..." + err.message); 
+      alert('Something went wrong...' + err.message);
       this.showSpinner = false;
     });
-      
   }
 
   discardImage() {
