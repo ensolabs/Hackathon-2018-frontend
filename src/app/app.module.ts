@@ -56,7 +56,7 @@ const appRoutes: Routes = [
     canActivate: [AdminUserCheckComponent]
   },
   {
-    path: 'admin',
+    path: 'admin/:pwd',
     component: AdminComponent,
     canActivate: [AdminUserCheckComponent]
   },
