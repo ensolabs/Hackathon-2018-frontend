@@ -14,7 +14,8 @@ export class UsersComponent implements OnInit {
 
   ngOnInit() {
     this._service.getUsers().subscribe(x => {
-      this.users = x.map(y => new UserInfo(y.FirstName, y.Email, Number(y.Score), y.HasGotPrice, false));
+      this.users = x.map(y => new UserInfo(y.FirstName, y.Email, Number(y.Score)
+        , y.HasGotPrice, false)).sort((y1, y2) => y2.score - y1.score);
     }, err => console.log(err));
   }
   getIcon(hasReceived: boolean): string {
@@ -24,7 +25,8 @@ export class UsersComponent implements OnInit {
     if (user.score > this._config.requiredScore) {
       this._service.gotPrice(user.id, !user.receivedPrice)
         .subscribe(x => {
-          user.receivedPrice = !user.receivedPrice; }, err => { console.log(err); });
+          user.receivedPrice = !user.receivedPrice;
+        }, err => { console.log(err); });
     }
   }
   isClickable(user: UserInfo): boolean {

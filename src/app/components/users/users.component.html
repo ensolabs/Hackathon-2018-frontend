@@ -4,7 +4,7 @@
         <div fxFlex (click)="receive(user)" [ngClass]="{'clickableButton': isClickable(user)}">{{user.firstName}}</div>
         <div fxFlex="10%">{{user.score}}</div>
         <div  fxFlex="10%">
-        <mat-icon *ngIf="user.score>3">{{getIcon(user.receivedPrice)}}</mat-icon>
+        <mat-icon *ngIf="user.score>_config.requiredScore">{{getIcon(user.receivedPrice)}}</mat-icon>
         </div>
       </div>
       <mat-divider></mat-divider>
