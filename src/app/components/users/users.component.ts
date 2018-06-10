@@ -14,7 +14,7 @@ export class UsersComponent implements OnInit {
 
   ngOnInit() {
     this._service.getUsers().subscribe(x => {
-      this.users = x.map(y => new UserInfo(y.FirstName, y.Email, Number(y.Score), y.HasGotPrice));
+      this.users = x.map(y => new UserInfo(y.FirstName, y.Email, Number(y.Score), y.HasGotPrice, false));
     }, err => console.log(err));
   }
   getIcon(hasReceived: boolean): string {

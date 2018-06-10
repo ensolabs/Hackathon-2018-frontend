@@ -57,16 +57,17 @@ export class CaptureComponent implements OnInit {
 
       let tags = new Array<string>();
       if (this.showTags) {
-        tags = x.tags.map(y => y.name );
+        tags = x.tags.map(y => y.name);
       }
       dialogConfig.data = {
         result: x,
         tags: tags
       };
-
-      this.dialog.open(ResultDialogComponent, dialogConfig);
+      const dialogref = this.dialog.open(ResultDialogComponent, dialogConfig);
+      dialogref.afterClosed().subscribe(u => {
+        this.router.navigate(['score']);
+      });
       this.showSpinner = false;
-      this.router.navigate(['score']);
     }, err => {
       alert('Something went wrong...' + err.message);
       this.showSpinner = false;

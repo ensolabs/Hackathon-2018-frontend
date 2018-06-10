@@ -41,6 +41,7 @@ import { FormsModule } from '@angular/forms';
 import { ResultDialogComponent } from './components/result-dialog/result-dialog.component';
 import { UsersComponent } from './components/users/users.component';
 import { AdminUserCheckComponent } from './components/admin-user-check/admin-user-check.component';
+import { CongratsDialogComponent } from './components/congrats-dialog/congrats-dialog.component';
 
 const appRoutes: Routes = [
   {
@@ -79,7 +80,8 @@ const appRoutes: Routes = [
     CaptureComponent,
     RegisteredCheckComponent,
     ResultDialogComponent,
-    UsersComponent
+    UsersComponent,
+    CongratsDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -123,7 +125,7 @@ const appRoutes: Routes = [
       multi: true
     }
   ],
-  entryComponents: [ResultDialogComponent],
+  entryComponents: [ResultDialogComponent, CongratsDialogComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {
