@@ -14,7 +14,7 @@ export class BackendService {
     console.log(user);
     return this.client.post<ScoreResult>(
       this.config.urlOwnScore,
-      { 'email': user.id });
+      { 'email': user.id, 'firstName': user.firstName });
   }
 
   submitImage(img) {
@@ -24,7 +24,7 @@ export class BackendService {
       {
         'email': user.id,
         'id': user.id,
-        'name': user.firstName,
+        'firstName': user.firstName,
         'image': img
       });
   }

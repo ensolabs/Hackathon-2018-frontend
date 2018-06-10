@@ -18,6 +18,7 @@ export class AppLoadService {
         this.configService.urlDeleteTask = settings['urlDeleteTask'];
         this.configService.urlGotPrice = settings['urlGotPrice'];
         this.configService.urlCheckPwd = settings['urlCheckPwd'];
+        this.configService.requiredScore = settings['requiredScore'];
         return settings;
       });
     return promise;

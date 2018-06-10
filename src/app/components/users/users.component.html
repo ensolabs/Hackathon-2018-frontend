@@ -1,7 +1,12 @@
 <mat-list>
-  <mat-list-item *ngFor="let user of users"  (click)="receive(user)" [ngClass]="{'clickableButton': isClickable(user)}">
-    <h3 matLine> {{user.firstName}} - {{user.score}} </h3>
-    <mat-icon *ngIf="user.score>99">{{getIcon(user.receivedPrice)}}</mat-icon>
-    <mat-divider></mat-divider>
+  <mat-list-item *ngFor="let user of users">
+      <div matLine fxLayout="row">
+        <div fxFlex (click)="receive(user)" [ngClass]="{'clickableButton': isClickable(user)}">{{user.firstName}}</div>
+        <div fxFlex="10%">{{user.score}}</div>
+        <div  fxFlex="10%">
+        <mat-icon *ngIf="user.score>3">{{getIcon(user.receivedPrice)}}</mat-icon>
+        </div>
+      </div>
+      <mat-divider></mat-divider>
   </mat-list-item>
 </mat-list>
