@@ -16,7 +16,7 @@ export class BackendService {
       { 'email': user.id, 'firstName': user.firstName });
   }
 
-  submitImage(img) {
+  submitImage(img): any {
     const user = JSON.parse( localStorage.getItem('enso-qr-id')) as UserInfo;
     return this.client.post(
       this.config.urlPostImage,

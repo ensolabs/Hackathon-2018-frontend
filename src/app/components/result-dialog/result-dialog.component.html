@@ -1,7 +1,17 @@
+<h1 mat-dialog-title>{{title}}</h1>
+<div mat-dialog-content class="content">
+  <div name="positive" *ngIf="result.scoreResult.Score > 0">
+Gratulerer! Du fikk {{result.scoreResult.Score}} poeng fordi du fikk blinkskudd av {{getTasks()}}. {{positiveText}}
+  </div>
+  <div name="negative" *ngIf="result.scoreResult.Score == 0">
+Du fikk dessverre ingen poeng for dette bildet. {{negativeText}}
+  </div>
 
-<div>
-  <h2 class="mat-body-2">Score</h2>
-  <div>Score: {{result.scoreResult.Score}}</div>
-  <div>Tasks: {{result.scoreResult.Tasks}}</div>
-  <div>OverallScore: {{result.scoreResult.OverallScore}}</div>
+  <div *ngIf="this.tags.length>0">
+    <hr>
+    Disse elementene ble funnet i bildet:
+    <ul>
+        <li *ngFor="let tag of tags">{{tag}}</li>
+    </ul>
+  </div>
 </div>

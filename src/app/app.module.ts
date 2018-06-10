@@ -28,7 +28,7 @@ import { ScoreComponent } from './components/score/score.component';
 import { BackendService } from './services/backend.service';
 import { HttpClientModule } from '@angular/common/http';
 
-import { RouterModule, Routes, Router } from '@angular/router';
+import { RouterModule, Routes, Router, ActivatedRouteSnapshot } from '@angular/router';
 import { AdminComponent } from './components/admin/admin.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { RegisterUserComponent } from './components/register-user/register-user.component';
@@ -50,6 +50,7 @@ const appRoutes: Routes = [
   },
   { path: 'register', component: RegisterUserComponent },
   { path: 'capture', component: CaptureComponent },
+  { path: 'capture/:debug', component: CaptureComponent },
   {
     path: 'users/:pwd',
     component: UsersComponent,
