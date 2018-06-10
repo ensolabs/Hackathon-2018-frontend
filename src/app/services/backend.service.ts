@@ -11,7 +11,6 @@ export class BackendService {
   }
   scoreStuff() {
     const user = JSON.parse( localStorage.getItem('enso-qr-id')) as UserInfo;
-    console.log(user);
     return this.client.post<ScoreResult>(
       this.config.urlOwnScore,
       { 'email': user.id, 'firstName': user.firstName });

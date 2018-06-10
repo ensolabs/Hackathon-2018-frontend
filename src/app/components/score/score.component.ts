@@ -21,7 +21,6 @@ export class ScoreComponent implements OnInit {
   ngOnInit() {
     this._service.scoreStuff().subscribe(
       x => {
-        console.log(x);
         this.priceScore = x.priceScore;
         this.totalScore = x.totalScore;
         this.scores = x.scoredTasks;

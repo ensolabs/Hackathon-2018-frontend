@@ -14,7 +14,6 @@ export class UsersComponent implements OnInit {
 
   ngOnInit() {
     this._service.getUsers().subscribe(x => {
-      console.log(x);
       this.users = x.map(y => new UserInfo(y.FirstName, y.Email, Number(y.Score), y.HasGotPrice));
     }, err => console.log(err));
   }
@@ -25,7 +24,6 @@ export class UsersComponent implements OnInit {
     if (user.score > this._config.requiredScore) {
       this._service.gotPrice(user.id, !user.receivedPrice)
         .subscribe(x => {
-          console.log('click');
           user.receivedPrice = !user.receivedPrice; }, err => { console.log(err); });
     }
   }

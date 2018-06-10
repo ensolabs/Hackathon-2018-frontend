@@ -20,8 +20,6 @@ export class ResultDialogComponent implements OnInit {
 
 
   ngOnInit() {
-    console.log('dette er i result');
-    console.log(this.result);
   }
 
 }

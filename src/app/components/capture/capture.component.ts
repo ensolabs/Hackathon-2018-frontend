@@ -51,7 +51,6 @@ export class CaptureComponent implements OnInit {
     this.showSpinner = true;
     this._service.submitImage(base64).subscribe(x => {
       const dialogConfig = new MatDialogConfig();
-      console.log(x);
       dialogConfig.autoFocus = true;
       dialogConfig.data = {
         result: x
