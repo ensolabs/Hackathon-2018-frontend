@@ -51,7 +51,7 @@ const appRoutes: Routes = [
   { path: 'register', component: RegisterUserComponent },
   { path: 'capture', component: CaptureComponent },
   {
-    path: 'users',
+    path: 'users/:pwd',
     component: UsersComponent,
     canActivate: [AdminUserCheckComponent]
   },

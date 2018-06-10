@@ -10,9 +10,11 @@ export class BackendService {
     this.headers = this.headers.set('Content-Type', 'application/json');
   }
   scoreStuff() {
+    const user = JSON.parse( localStorage.getItem('enso-qr-id')) as UserInfo;
+    console.log(user);
     return this.client.post<ScoreResult>(
       this.config.urlOwnScore,
-      { 'email': localStorage.getItem('enso-qr-id') });
+      { 'email': user.id });
   }
 
   submitImage(img) {

@@ -1,3 +1,3 @@
 export class AdminUser {
-    constructor(public Email: string, public HasGotPrice: string, public Score: string) {}
+    constructor(public userName: string, public receivedPrice: string, public score: number, public Id: string) {}
 }

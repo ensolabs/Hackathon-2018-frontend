@@ -1,6 +1,6 @@
 <mat-list>
   <mat-list-item *ngFor="let user of users"  (click)="receive(user)" [ngClass]="{'clickableButton': isClickable(user)}">
-    <h3 matLine> {{user.userName}} - {{user.score}} </h3>
+    <h3 matLine> {{user.firstName}} - {{user.score}} </h3>
     <mat-icon *ngIf="user.score>99">{{getIcon(user.receivedPrice)}}</mat-icon>
     <mat-divider></mat-divider>
   </mat-list-item>

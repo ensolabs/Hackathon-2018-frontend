@@ -12,10 +12,9 @@ export class UsersComponent implements OnInit {
   constructor(private _service: BackendService) { }
 
   ngOnInit() {
-
-
     this._service.getUsers().subscribe(x => {
-      this.users = x.map(y => new UserInfo(y.Email, y.Email, Number(y.Score), y.HasGotPrice === 'True'));
+      console.log(x);
+      this.users = x.map(y => new UserInfo(y.userName, y.Id, Number(y.score), y.receivedPrice === 'true'));
     }, err => console.log(err));
   }
   getIcon(hasReceived: boolean): string {

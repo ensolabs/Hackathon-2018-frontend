@@ -50,9 +50,8 @@ export class CaptureComponent implements OnInit {
     const base64 = dataURL.substr(dataURL.indexOf(',') + 1);
     this.showSpinner = true;
     this._service.submitImage(base64).subscribe(x => {
-      console.log(x);
       const dialogConfig = new MatDialogConfig();
-
+      console.log(x);
       dialogConfig.autoFocus = true;
       dialogConfig.data = {
         result: x
