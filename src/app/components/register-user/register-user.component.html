@@ -1,12 +1,14 @@
 <div>
-  <h2 class="mat-h2">Scan your badge</h2>
+  <h2 class="mat-subheading-2">Skann QR-koden på adgangskortet</h2>
   <mat-card>
     <zxing-scanner #scanner class="small-video" [scannerEnabled]="scannerEnabled" [autofocusEnabled]="autofocusEnabled" [device]="selectedDevice"
-      [cssClass]="'small-video'" (camerasFound)="displayCameras($event)" (scanSuccess)="handleQrCodeResult($event)"></zxing-scanner>
+      [cssClass]="'small-video'" (camerasFound)="displayCameras($event)" (scanSuccess)="handleQrCodeResult($event)">
+    </zxing-scanner>
+
     <div *ngIf="user.id!=null&&user.firstName!=null" fxLayout="row" class="bottomRow" fxLayoutAlign="space-around center">
-      <div fxFlex>Welcome {{user.firstName}}! </div>
+      <div fxFlex>Velkommen {{user.firstName}}! </div>
       <div>
-        <button mat-raised-button (click)="start()">Begin the fun</button>
+        <button mat-raised-button color="accent" (click)="start()">Begynn moroa!</button>
       </div>
     </div>
   </mat-card>

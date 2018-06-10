@@ -1,7 +1,13 @@
 @import '~material-bottom-nav';
 
 .bottom-nav {
-  @include bottom-nav($background-color: #009688, $active-color: #FFFFFF, $inactive-color: #E0E0E0, $hide-inactive-labels: true);
+  height: 70px;
+  @include bottom-nav(
+    $background-color: #748996,
+    $active-color: #ffffff,
+    $inactive-color: #e0e0e0,
+    $hide-inactive-labels: true
+  );
 }
 .hidden {
   display: none;
@@ -10,7 +16,7 @@
   padding: 20px;
 }
 .myButton2 {
-  margin:20px;
+  margin: 20px;
 }
 
 .small-video {
@@ -23,12 +29,11 @@
   width: 100%;
   object-fit: contain;
 }
-.videoStyle{
+.videoStyle {
   position: fixed;
-width: 100%;
-height: 100%;
-left: 0;
-top: 100px;
-z-index: 10;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 100px;
+  z-index: 10;
 }
-

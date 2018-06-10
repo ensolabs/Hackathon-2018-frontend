@@ -1,37 +1,61 @@
-<div class="page" fxLayout="column">
-  <div fxLayout="row" class="textbox">
-    <div class="mat-body-1">Velkommen til Scan'o'rama! Her gjelder det å ta bilde av de riktige tingene! Ta bilder med appen og få poeng dersom vi
-      kjenner igjen det du tar bilde av. På standen vår står noen av tingene du kan få poeng for listet opp, men det e rogså
-      en del andre ting som er poenggivende, så her er det bare å knipse i vei! :)</div>
-  </div>
+<div>
+  <mat-card>
+    <mat-card-subtitle>
+      Instruksjoner
+    </mat-card-subtitle>
+    <mat-card-content>
+      Velkommen til Scan'o'rama!
+      <br>
+      <br> Her gjelder det å ta bilde av de riktige tingene!
+      <br>
+      <br> Ta bilder med appen og få poeng dersom vi kjenner igjen det du tar bilde av. På standen vår står noen av tingene du
+      kan få poeng for listet opp, men det er også en del andre ting som er poenggivende, så her er det bare å knipse i vei!
+      :)
+    </mat-card-content>
+  </mat-card>
 
-  <div fxLayout="row" class="textbox">
-    <div class="mat-body-1">Når du har fått minst {{priceScore}} poeng så kom til standen å få deg en premie!</div>
-  </div>
+  <br>
 
-  <div fxLayout="column" class="textbox">
-    <div fxLayout="row">
-      <div class="mat-body-1">Antall poeng / poeng du trenger for å få premie</div>
-      <div class="progressScore mat-body-1">{{totalScore}}/{{priceScore}}</div>
-    </div>
-    <mat-progress-bar mode="determinate" value="{{totalScore}}"></mat-progress-bar>
-  </div>
+  <mat-card>
+    <mat-card-subtitle>
+      Dine poeng
+    </mat-card-subtitle>
+    <mat-card-content>
+      <p>Når du har fått minst {{priceScore}} poeng kan du komme til standen vår å få deg en premie.</p>
 
+      <div id="score-bar">
+        <mat-progress-bar mode="determinate" color="accent" value="{{totalScore}}"></mat-progress-bar>
+        <div class="total-score">{{totalScore}} poeng</div>
+        <div *ngIf="totalScore >= priceScore">Du har nok poeng til en premie!</div>
+      </div>
+    </mat-card-content>
+  </mat-card>
 
-  <mat-table class="scoreboard" #table [dataSource]="scores">
+  <br>
 
-    <ng-container matColumnDef="name">
-      <mat-header-cell *matHeaderCellDef> Beskrivelse </mat-header-cell>
-      <mat-cell *matCellDef="let score">{{score.name}} </mat-cell>
-    </ng-container>
+  <mat-card>
+    <mat-card-subtitle>
+      Score board
+    </mat-card-subtitle>
+    <mat-card-content>
+      <mat-table class="scoreboard" #table [dataSource]="scores">
+        <ng-container matColumnDef="name">
+          <mat-header-cell *matHeaderCellDef>Beskrivelse</mat-header-cell>
+          <mat-cell *matCellDef="let score">{{score.name}} </mat-cell>
+        </ng-container>
 
-    <ng-container matColumnDef="score">
-      <mat-header-cell *matHeaderCellDef> Poeng </mat-header-cell>
-      <mat-cell *matCellDef="let score">{{score.score}} </mat-cell>
-    </ng-container>
+        <ng-container matColumnDef="score">
+          <mat-header-cell *matHeaderCellDef>Poeng</mat-header-cell>
+          <mat-cell *matCellDef="let score">{{score.score}} </mat-cell>
+        </ng-container>
 
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-  </mat-table>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+    </mat-card-content>
+  </mat-card>
 </div>
-<a mat-fab class="custom-button"  routerLink="/capture"> <mat-icon>camera_alt</mat-icon></a>
+
+<a mat-fab class="custom-button" routerLink="/capture">
+  <mat-icon>camera_alt</mat-icon>
+</a>

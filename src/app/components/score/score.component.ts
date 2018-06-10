@@ -8,7 +8,7 @@ import { CongratsDialogComponent } from '../congrats-dialog/congrats-dialog.comp
 @Component({
   selector: 'app-score',
   templateUrl: './score.component.html',
-  styleUrls: ['./score.component.scss']
+  styleUrls: ['./score.component.scss'],
 })
 export class ScoreComponent implements OnInit {
   public scores: ScoreEntry[];
@@ -17,8 +17,7 @@ export class ScoreComponent implements OnInit {
   displayedColumns = ['name', 'score'];
   dataSource = new MatTableDataSource(this.scores);
 
-  constructor(public _service: BackendService, private dialog: MatDialog) {
-  }
+  constructor(public _service: BackendService, private dialog: MatDialog) {}
   ngOnInit() {
     this._service.scoreStuff().subscribe(
       x => {
@@ -33,7 +32,6 @@ export class ScoreComponent implements OnInit {
         if (this.totalScore >= x.priceScore) {
           this.showCongrats();
         }
-
       },
       err => {
         console.log(err);
@@ -50,6 +48,5 @@ export class ScoreComponent implements OnInit {
       user.congrats = true;
       localStorage.setItem('enso-qr-id', JSON.stringify(user));
     }
-
   }
 }
