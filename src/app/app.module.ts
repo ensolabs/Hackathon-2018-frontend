@@ -28,7 +28,7 @@ import { ScoreComponent } from './components/score/score.component';
 import { BackendService } from './services/backend.service';
 import { HttpClientModule } from '@angular/common/http';
 
-import { RouterModule, Routes, Router } from '@angular/router';
+import { RouterModule, Routes, Router, ActivatedRouteSnapshot } from '@angular/router';
 import { AdminComponent } from './components/admin/admin.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { RegisterUserComponent } from './components/register-user/register-user.component';
@@ -41,6 +41,7 @@ import { FormsModule } from '@angular/forms';
 import { ResultDialogComponent } from './components/result-dialog/result-dialog.component';
 import { UsersComponent } from './components/users/users.component';
 import { AdminUserCheckComponent } from './components/admin-user-check/admin-user-check.component';
+import { CongratsDialogComponent } from './components/congrats-dialog/congrats-dialog.component';
 
 const appRoutes: Routes = [
   {
@@ -50,6 +51,7 @@ const appRoutes: Routes = [
   },
   { path: 'register', component: RegisterUserComponent },
   { path: 'capture', component: CaptureComponent },
+  { path: 'capture/:debug', component: CaptureComponent },
   {
     path: 'users/:pwd',
     component: UsersComponent,
@@ -78,7 +80,8 @@ const appRoutes: Routes = [
     CaptureComponent,
     RegisteredCheckComponent,
     ResultDialogComponent,
-    UsersComponent
+    UsersComponent,
+    CongratsDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -122,7 +125,7 @@ const appRoutes: Routes = [
       multi: true
     }
   ],
-  entryComponents: [ResultDialogComponent],
+  entryComponents: [ResultDialogComponent, CongratsDialogComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {

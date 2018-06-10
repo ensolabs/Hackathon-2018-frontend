@@ -12,7 +12,7 @@ export class RegisterUserComponent implements OnInit {
 
   @ViewChild('scanner')
   scanner: ZXingScannerComponent;
-  public user: UserInfo = new UserInfo(null, null, 0, false);
+  public user: UserInfo = new UserInfo(null, null, 0, false, false);
   savedUser: string;
 
   hasCameras = false;
@@ -50,7 +50,7 @@ export class RegisterUserComponent implements OnInit {
     this.scanner.changeDevice(null);
     this.scanner.scannerEnabled = false;
     const v = atob(resultString.split('~')[1]).split('|~');
-    this.user = new UserInfo(v[1], v[0], 0, false);
+    this.user = new UserInfo(v[1], v[0], 0, false, false);
 
   }
   start() {
