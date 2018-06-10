@@ -43,4 +43,7 @@ export class BackendService {
   getUsers() {
     return this.client.get<AdminUser[]>(this.config.urlHighScore);
   }
+  checkPwd(pwd: string) {
+    return this.client.post<Response>(this.config.urlCheckPwd, JSON.stringify({password: pwd}), {headers: this.headers});
+  }
 }
