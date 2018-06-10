@@ -1,11 +1,14 @@
-<div>
-  <mat-toolbar color="primary">
-    <mat-toolbar-row>
-      <span>Scan'o'rama 2018</span>
-      <img src="../assets/enso_logo.png" alt="Ensō" id="logo">
-    </mat-toolbar-row>
-  </mat-toolbar>
+<div fxLayout="column" fxLayoutAlign="middle center">
+  <div>
+    <img id="logo" src="../assets/enso_logo.svg" alt="Ensō">
+  </div>
+  <div>
+    <span id="app-name" class="mat-display-1">
+      Scan'o'rama
+    </span>
+  </div>
 </div>
+
 <div class="page">
   <router-outlet></router-outlet>
 </div>

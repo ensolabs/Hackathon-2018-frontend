@@ -1,37 +1,23 @@
 @import '~material-bottom-nav';
 
-.bottom-nav {
-  @include bottom-nav($background-color: #009688, $active-color: #FFFFFF, $inactive-color: #E0E0E0, $hide-inactive-labels: true);
+.custom-button {
+  position: fixed;
+  right: 20px;
+  bottom: 15px;
+  z-index: 1000;
 }
-.progressScore {
-  margin-left: auto;
+
+.total-score {
+  text-align: right;
+  margin-top: 10px;
+  font-weight: 700;
 }
 
 .mat-column-name {
-  flex: 0 0 89%;
+  flex: 1 0 auto;
 }
 
 .mat-column-score {
   display: flex;
   justify-content: flex-end;
-}
-
-.scoreboard {
-  margin-top: 3em;
-  margin-bottom: auto;
-}
-
-.textbox {
-  margin-top: 1em;
-  margin-bottom: 1em;
-}
-
-.capture-button {
-  margin-top: 10em;
-}
-.custom-button{
-  position: absolute;
-  right: 20px;
-  bottom: 15px;
-  z-index: 1000;
 }

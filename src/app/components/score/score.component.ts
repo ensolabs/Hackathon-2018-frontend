@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-score',
   templateUrl: './score.component.html',
-  styleUrls: ['./score.component.scss']
+  styleUrls: ['./score.component.scss'],
 })
 export class ScoreComponent implements OnInit {
   public scores: ScoreEntry[]; // = [new ScoreEntry(1, 'bygg', 'build', 10), new ScoreEntry(2, 'ro ro', 'rowing', 20)];
@@ -17,7 +17,7 @@ export class ScoreComponent implements OnInit {
   displayedColumns = ['name', 'score'];
   dataSource = new MatTableDataSource(this.scores);
 
-  constructor(public _service: BackendService,   private router: Router  ) {}
+  constructor(public _service: BackendService, private router: Router) {}
   ngOnInit() {
     this._service.scoreStuff().subscribe(
       x => {

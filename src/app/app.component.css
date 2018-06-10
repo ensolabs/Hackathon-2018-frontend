@@ -1,8 +1,12 @@
 .page {
-  margin: 20px;
+  margin: 10px 20px 80px 20px;
 }
 
 #logo {
-  margin-left: auto;
-  height: 50%;
+  height: 40px;
+}
+
+#app-name {
+  color: #748996;
+  font-size: 1.4rem;
 }
