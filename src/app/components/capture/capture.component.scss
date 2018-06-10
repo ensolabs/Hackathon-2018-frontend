@@ -1,6 +1,7 @@
 @import '~material-bottom-nav';
 
 .bottom-nav {
+  height: 70px;
   @include bottom-nav(
     $background-color: #748996,
     $active-color: #ffffff,
