@@ -12,20 +12,24 @@
   </div>
 </div>
 <nav class="bottom-nav">
-  <div [ngClass]="{'hidden': showCapture }">
-    <button mat-fab color="accent" (click)="captureImage()">
-      <mat-icon>camera</mat-icon>
-    </button>
-  </div>
-  <div [ngClass]="{'hidden': !showCapture }" fxFill>
-    <div fxLayout="row" fxLayoutAlign="center center" fxFill>
-      <button mat-fab color="warn" (click)="discardImage()">
-        <mat-icon>delete</mat-icon>
-      </button>
-      <div fxFlex="10"></div>
-      <button mat-fab color="accent" (click)="submitImage()">
-        <mat-icon>send</mat-icon>
+  <div *ngIf="!showCapture" fxLayout="row" fxLayoutAlign="space-around center" fxFill>
+    <div>
+      <button mat-raised-button routerLink="/score">
+        Tilbake
       </button>
     </div>
+    <div>
+      <button mat-fab color="accent" (click)="captureImage()">
+        <mat-icon>camera</mat-icon>
+      </button>
+    </div>
+  </div>
+  <div *ngIf="showCapture" fxLayout="row" fxLayoutAlign="space-around center" fxFill>
+    <button mat-fab color="warn" (click)="discardImage()">
+      <mat-icon>delete</mat-icon>
+    </button>
+    <button mat-fab color="accent" (click)="submitImage()">
+      <mat-icon>send</mat-icon>
+    </button>
   </div>
 </nav>
