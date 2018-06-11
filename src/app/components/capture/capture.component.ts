@@ -4,6 +4,7 @@ import { BackendService } from '../../services/backend.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MatDialog, MatDialogConfig } from '@angular/material';
 import { ResultDialogComponent } from '../result-dialog/result-dialog.component';
+import { UserInfo } from '../../model/all';
 
 @Component({
   selector: 'app-capture',
@@ -27,7 +28,12 @@ export class CaptureComponent implements OnInit {
   useParentWidthHeight = false;
 
   constructor(public _service: BackendService, public router: Router, private dialog: MatDialog, private route: ActivatedRoute) {
-    this.showTags = this.route.snapshot.params.debug === 'debug';
+    const user = JSON.parse(localStorage.getItem('enso-qr-id')) as UserInfo;
+    if (this.route.snapshot.params.debug === 'debug') {
+      user.showDebug = true;
+      localStorage.setItem('enso-qr-id', JSON.stringify(user));
+    }
+    this.showTags = user.showDebug;
   }
 
   ngOnInit() {
