@@ -13,6 +13,7 @@
         <span> {{task.Score}} </span>
         <span class="demo-2"> -- {{getKeywords(task)}} </span>
       </p>
+      <mat-icon (click)="edit(task)" class="clickableButton">edit</mat-icon>
       <mat-icon (click)="delete(task)" class="clickableButton">delete</mat-icon>
     </mat-list-item>
   </mat-list>
