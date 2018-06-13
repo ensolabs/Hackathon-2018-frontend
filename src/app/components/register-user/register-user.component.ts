@@ -49,9 +49,14 @@ export class RegisterUserComponent implements OnInit {
   handleQrCodeResult(resultString: string) {
     this.scanner.changeDevice(null);
     this.scanner.scannerEnabled = false;
-    const v = atob(resultString.split('~')[1]).split('|~');
-    this.user = new UserInfo(v[1], v[0], 0, false, false);
+    const v2 = this.b64DecodeUnicode(resultString.split('~')[1]).split('|~');
+    this.user = new UserInfo(v2[1], v2[0], 0, false, false);
+  }
 
+  b64DecodeUnicode(str) {
+    return decodeURIComponent(Array.prototype.map.call(atob(str), function (c) {
+      return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
   }
   start() {
     localStorage.setItem('enso-qr-id', JSON.stringify(this.user));
